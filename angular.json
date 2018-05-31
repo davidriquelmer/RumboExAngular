@@ -20,12 +20,30 @@
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/images"
             ],
             "styles": [
-              "src/styles.css"
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/css/helper.css",
+              { "input": "src/css/style.css", "bundleName": "style2" },
+              "./node_modules/fullcalendar/dist/fullcalendar.css",
+              "./node_modules/fullcalendar-scheduler/dist/scheduler.css"
             ],
-            "scripts": []
+            "scripts": ["./node_modules/jquery/dist/jquery.min.js",
+              "src/js/lib/bootstrap/js/popper.min.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "src/js/jquery.slimscroll.js",
+              "src/js/sidebarmenu.js",
+              "src/js/lib/sticky-kit-master/dist/sticky-kit.min.js",
+              "src/js/lib/morris-chart/raphael-min.js",
+              "src/js/lib/morris-chart/morris.js",
+              "src/js/lib/morris-chart/dashboard1-init.js",
+              "src/js/custom.min.js",
+              "./node_modules/moment/min/moment.min.js",
+              "./node_modules/fullcalendar/dist/fullcalendar.min.js",
+              "./node_modules/fullcalendar-scheduler/dist/scheduler.min.js"
+            ]
           },
           "configurations": {
             "production": {
