@@ -17,7 +17,6 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(): void {
-    console.log('Entra al metodo');
     this.auth.login(this.user)
     .then((user) => {
       localStorage.setItem('token', user.auth_token);
