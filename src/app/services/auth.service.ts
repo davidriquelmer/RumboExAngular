@@ -29,4 +29,9 @@ export class AuthService {
     });
     return this.http.get(url, {headers: this.httpheaders}).toPromise();
   }
+
+   logout(): Promise<any> {
+    let url: string = `${this.BASE_URL}/logout`;
+    return this.http.post(url, null, {headers: this.httpheaders}).toPromise();
+  }
 }

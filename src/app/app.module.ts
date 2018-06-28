@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule }    from '@angular/forms';
-import { RouterModule } from '@angular/router'
-import { HttpClientModule }    from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -12,6 +12,7 @@ import { EnsureAuthenticatedService } from './services/ensure-authenticated.serv
 import { LoginRedirectService } from './services/login-redirect.service';
 import { MainComponent } from './components/main/main.component';
 import { ScheduleComponent } from './components/schedule/schedule.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ScheduleComponent } from './components/schedule/schedule.component';
     LoginComponent,
     StatusComponent,
     MainComponent,
-    ScheduleComponent
+    ScheduleComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -29,10 +31,11 @@ import { ScheduleComponent } from './components/schedule/schedule.component';
       { path: 'login', component: LoginComponent },
       { path: 'status', component: StatusComponent },
       { path: 'schedule', component: ScheduleComponent },
-      { path: 'main', component: MainComponent }
+      { path: 'main', component: MainComponent },
+      { path: 'logout', component: LogoutComponent}
     ])
   ],
-  providers: [AuthService,EnsureAuthenticatedService,
+  providers: [AuthService, EnsureAuthenticatedService,
     LoginRedirectService],
   bootstrap: [AppComponent]
 })
