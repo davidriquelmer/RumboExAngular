@@ -6,7 +6,7 @@ import { User } from '../models/user';
   providedIn: 'root'
 })
 export class AuthService {
-  private BASE_URL: string = 'http://localhost:5000/api';
+  private BASE_URL: string = 'http://localhost:5000';
   private httpheaders: HttpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 
   constructor(private http: HttpClient) { }
@@ -28,5 +28,10 @@ export class AuthService {
       Authorization: `Bearer ${token}`
     });
     return this.http.get(url, {headers: this.httpheaders}).toPromise();
+  }
+
+   logout(): Promise<any> {
+    let url: string = `${this.BASE_URL}/logout`;
+    return this.http.post(url, null, {headers: this.httpheaders}).toPromise();
   }
 }

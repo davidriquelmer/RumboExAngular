@@ -1,3 +1,5 @@
 export class User {
-    constructor(username?: string, password?: string, remenber?: number ) {}
+    constructor(username?: string, password?: string, remenber?: boolean) {
+    }
 }
+
