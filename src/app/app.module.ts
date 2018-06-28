@@ -12,6 +12,7 @@ import { EnsureAuthenticatedService } from './services/ensure-authenticated.serv
 import { LoginRedirectService } from './services/login-redirect.service';
 import { MainComponent } from './components/main/main.component';
 import { ScheduleComponent } from './components/schedule/schedule.component';
+import {TaskService} from "./services/task.service";
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { ScheduleComponent } from './components/schedule/schedule.component';
     ])
   ],
   providers: [AuthService,EnsureAuthenticatedService,
-    LoginRedirectService],
+    LoginRedirectService, TaskService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
