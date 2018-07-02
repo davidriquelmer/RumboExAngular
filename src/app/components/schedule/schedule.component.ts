@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from "../../models/task";
 import { TaskService} from "../../services/task.service";
-import {Observable} from "rxjs/internal/Observable";
 import * as $ from 'jquery';
 import 'fullcalendar';
 import 'fullcalendar-scheduler';
@@ -22,12 +21,6 @@ export class ScheduleComponent implements OnInit {
 
   ngOnInit() {
 
-    // print elements fetched from request for testing purposes
-    this.taskService.get_personal_tasks().subscribe(val => console.log(val))
-    // let data = this.taskService.get_personal_tasks().subscribe((data: Task) => this.task = data)
-    // console.log('data:')
-    // console.log(data)
-
     $(function() {
       let containerEl: JQuery = $('#calendar');
       containerEl.fullCalendar({
@@ -41,63 +34,20 @@ export class ScheduleComponent implements OnInit {
         navLinks: true, // can click day/week names to navigate views
         editable: true,
         eventLimit: true, // allow "more" link when too many events
-        // events: this.tasks
-    //     events: [
-    //       {
-    //         title: 'Clases de física',
-    //         start: '2018-06-25',
-    //       },
-    //       {
-    //         title: 'Conferencia de Python II',
-    //         start: '2018-01-07',
-    //         end: '2018-01-10'
-    //       },
-    //       {
-    //         id: 999,
-    //         title: 'Clases Calculo I',
-    //         start: '2018-01-09T16:00:00'
-    //       },
-    //       {
-    //         id: 999,
-    //         title: 'Clases Calculo I',
-    //         start: '2018-01-16T16:00:00'
-    //       },
-    //       {
-    //         title: 'Taller de Redacción de Tesis en Ingles',
-    //         start: '2018-01-11',
-    //         end: '2018-01-13'
-    //       },
-    //       {
-    //         title: 'Meeting',
-    //         start: '2018-01-12T10:30:00',
-    //         end: '2018-01-12T12:30:00'
-    //       },
-    //       {
-    //         title: 'Lunch',
-    //         start: '2018-01-12T12:00:00'
-    //       },
-    //       {
-    //         title: 'Meeting',
-    //         start: '2018-01-12T14:30:00'
-    //       },
-    //       {
-    //         title: 'Happy Hour',
-    //         start: '2018-01-12T17:30:00'
-    //       },
-    //       {
-    //         title: 'Dinner',
-    //         start: '2018-01-12T20:00:00'
-    //       },
-    //       {
-    //         title: 'Hiking a Utuado',
-    //         start: '2018-01-13T07:00:00'
-    //       },
-    //       {
-    //         title: 'Realizar encuesta',
-    //         url: 'http://google.com/',
-    //         start: '2018-01-28'
-    //       }
-    // ]
+        eventSources: [
+          {
+            url: "http://localhost:5000/task/personal/802364584",
+            color: "blue"
+          },
+          {
+            url: "http://localhost:5000/task/course/802364584",
+            color: "red"
+          },
+          {
+            url: "http://localhost:5000/task/study/802364584",
+            color: "green"
+          }
+        ]
       });
     });
     $(function() {
