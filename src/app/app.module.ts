@@ -13,7 +13,11 @@ import { LoginRedirectService } from './services/login-redirect.service';
 import { MainComponent } from './components/main/main.component';
 import { ScheduleComponent } from './components/schedule/schedule.component';
 import { LogoutComponent } from './components/logout/logout.component';
-import {TaskService} from "./services/task.service";
+import {TaskService} from './services/task.service';
+import { AdminloginComponent } from './components/adminlogin/adminlogin.component';
+import { StudentloginComponent } from './components/studentlogin/studentlogin.component';
+import { CounselorloginComponent } from './components/counselorlogin/counselorlogin.component';
+import { MentorloginComponent } from './components/mentorlogin/mentorlogin.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,11 @@ import {TaskService} from "./services/task.service";
     StatusComponent,
     MainComponent,
     ScheduleComponent,
-    LogoutComponent
+    LogoutComponent,
+    AdminloginComponent,
+    StudentloginComponent,
+    CounselorloginComponent,
+    MentorloginComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +44,7 @@ import {TaskService} from "./services/task.service";
       { path: 'logout', component: LogoutComponent}
     ])
   ],
-  providers: [AuthService,EnsureAuthenticatedService,
+  providers: [AuthService, EnsureAuthenticatedService,
     LoginRedirectService, TaskService],
   bootstrap: [AppComponent]
 })
