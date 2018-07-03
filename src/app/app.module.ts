@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from './components/logins/login/login.component';
 import { AuthService } from './services/auth.service';
 import { StatusComponent } from './components/status/status.component';
 import { EnsureAuthenticatedService } from './services/ensure-authenticated.service';
@@ -14,10 +14,10 @@ import { MainComponent } from './components/main/main.component';
 import { ScheduleComponent } from './components/schedule/schedule.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import {TaskService} from './services/task.service';
-import { AdminloginComponent } from './components/adminlogin/adminlogin.component';
-import { StudentloginComponent } from './components/studentlogin/studentlogin.component';
-import { CounselorloginComponent } from './components/counselorlogin/counselorlogin.component';
-import { MentorloginComponent } from './components/mentorlogin/mentorlogin.component';
+import { AdminloginComponent } from './components/logins/adminlogin/adminlogin.component';
+import { StudentloginComponent } from './components/logins/studentlogin/studentlogin.component';
+import { CounselorloginComponent } from './components/logins/counselorlogin/counselorlogin.component';
+import { MentorloginComponent } from './components/logins/mentorlogin/mentorlogin.component';
 
 @NgModule({
   declarations: [
