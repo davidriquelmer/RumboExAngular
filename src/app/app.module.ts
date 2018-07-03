@@ -13,6 +13,8 @@ import { LoginRedirectService } from './services/login-redirect.service';
 import { MainComponent } from './components/main/main.component';
 import { ScheduleComponent } from './components/schedule/schedule.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { AuthGuard} from './auth.guard';
+
 
 @NgModule({
   declarations: [
@@ -29,14 +31,14 @@ import { LogoutComponent } from './components/logout/logout.component';
     HttpClientModule,
     RouterModule.forRoot([
       { path: 'login', component: LoginComponent },
-      { path: 'status', component: StatusComponent },
-      { path: 'schedule', component: ScheduleComponent },
-      { path: 'main', component: MainComponent },
-      { path: 'logout', component: LogoutComponent}
+      { path: 'status', component: StatusComponent, },
+      { path: 'schedule', component: ScheduleComponent, canActivate: [AuthGuard] },
+      { path: 'main', component: MainComponent,  canActivate: [AuthGuard] },
+      { path: 'logout', component: LogoutComponent, }
     ])
   ],
   providers: [AuthService, EnsureAuthenticatedService,
-    LoginRedirectService],
+    LoginRedirectService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

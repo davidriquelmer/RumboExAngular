@@ -8,7 +8,6 @@ import { User } from '../models/user';
 export class AuthService {
   private BASE_URL: string = 'http://localhost:5000';
   private httpheaders: HttpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
-
   constructor(private http: HttpClient) { }
 
   login(user): Promise<any> {
