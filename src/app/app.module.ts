@@ -48,7 +48,7 @@ import {AdminGuard} from './guards/admin.guard';
       { path: 'counselorlogin', component: CounselorloginComponent },
       { path: 'mentorlogin', component: MentorloginComponent },
       { path: 'professorlogin', component: ProfessorloginComponent },
-      { path: 'register', component: RegisterComponent},
+      { path: 'register', component: RegisterComponent, canActivate: [AdminGuard]},
       { path: 'status', component: StatusComponent},
       { path: 'schedule', component: ScheduleComponent, canActivate: [AuthGuard] },
       { path: 'main', component: MainComponent,  canActivate: [AuthGuard] },
