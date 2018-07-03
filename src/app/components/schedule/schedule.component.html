@@ -266,7 +266,25 @@
       <div class="row">
 
         <div class="col-lg-8">
-            <div id='calendar'></div>
+            <div id='calendar'>
+              <!--<JwModal id="custom-modal-1">-->
+                <!--<h1>A Custom Modal!</h1>-->
+                <!--<p>Home page text: <input type="text" [(ngModel)]="bodyText" /></p>-->
+                <!--<button (click)="closeModal('custom-modal-1');">Close</button>-->
+              <!--</JwModal>-->
+              </div>
+
+
+            <div id="popoverContent" class="hide">
+              This rich  <pre>html</pre> content goes inside popover
+            </div>
+
+            <!--<div id="eventContent" title="Event Details" style="display:none;">-->
+              <!--Start: <span id="startTime"></span><br>-->
+              <!--End: <span id="endTime"></span><br><br>-->
+              <!--<p id="eventInfo"></p>-->
+              <!--<p><strong><a id="eventLink" href="" target="_blank">Read More</a></strong></p>-->
+            <!--</div>-->
           </div>
 
           <div class="col-lg-4">
@@ -278,37 +296,40 @@
                                       <div class="tdl-holder">
                                           <div class="tdl-content">
                                               <ul>
-                                                  <li>
-                                                      <label>
-                            <input type="checkbox"><i class="bg-primary"></i><span>Hacer Practica II de física</span>
-                            <a href='#' class="ti-close"></a>
-                          </label>
-                                                  </li>
-                                                  <li>
-                                                      <label>
-                            <input type="checkbox" checked><i class="bg-success"></i><span>Estudiar para examen de matemáticas</span>
-                            <a href='#' class="ti-close"></a>
-                          </label>
-                                                  </li>
-                                                  <li>
-                                                      <label>
-                            <input type="checkbox" checked><i class="bg-warning"></i><span>Hacer compras para la nevera</span>
-                            <a href='#' class="ti-close"></a>
-                          </label>
-                                                  </li>
-                                                  <li>
-                                                      <label>
-                            <input type="checkbox" checked><i class="bg-danger"></i><span>Realizar rutina de ejercicios</span>
-                            <a href='#' class="ti-close"></a>
-                          </label>
-                                                  </li>
+                                                <li ngFor="task in personal_tasks">
+                                                  {{task}}
+                                                </li>
+                                                  <!--<li>-->
+                                                      <!--<label>-->
+                            <!--<input type="checkbox"><i class="bg-primary"></i><span>Hacer Practica II de física</span>-->
+                            <!--<a href='#' class="ti-close"></a>-->
+                          <!--</label>-->
+                                                  <!--</li>-->
+                                                  <!--<li>-->
+                                                      <!--<label>-->
+                            <!--<input type="checkbox" checked><i class="bg-success"></i><span>Estudiar para examen de matemáticas</span>-->
+                            <!--<a href='#' class="ti-close"></a>-->
+                          <!--</label>-->
+                                                  <!--</li>-->
+                                                  <!--<li>-->
+                                                      <!--<label>-->
+                            <!--<input type="checkbox" checked><i class="bg-warning"></i><span>Hacer compras para la nevera</span>-->
+                            <!--<a href='#' class="ti-close"></a>-->
+                          <!--</label>-->
+                                                  <!--</li>-->
+                                                  <!--<li>-->
+                                                      <!--<label>-->
+                            <!--<input type="checkbox" checked><i class="bg-danger"></i><span>Realizar rutina de ejercicios</span>-->
+                            <!--<a href='#' class="ti-close"></a>-->
+                          <!--</label>-->
+                                                  <!--</li>-->
 
-                                                  <li>
-                                                      <label>
-                            <input type="checkbox" checked><i class="bg-success"></i><span>Reunión de grupo para takehome de Calculo I</span>
-                            <a href='#' class="ti-close"></a>
-                          </label>
-                                                  </li>
+                                                  <!--<li>-->
+                                                      <!--<label>-->
+                            <!--<input type="checkbox" checked><i class="bg-success"></i><span>Reunión de grupo para takehome de Calculo I</span>-->
+                            <!--<a href='#' class="ti-close"></a>-->
+                          <!--</label>-->
+                                                  <!--</li>-->
                                               </ul>
                                           </div>
                                           <input type="text" class="tdl-new form-control" placeholder="Type here">
@@ -325,8 +346,8 @@
           <div class="col-lg-12">
               <div id='calendar2'></div>
             </div>
-  
-  
+
+
         </div>
       <!-- End PAge Content -->
   </div>

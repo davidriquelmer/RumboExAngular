@@ -1,7 +1,8 @@
 export interface Task {
-  name: string,
+  task_id: number,
+  title: string,
   description: string,
-  start_time: Date,
-  end_time: Date,
+  start: Date,
+  end: Date,
   finished: boolean
 }

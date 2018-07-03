@@ -18,12 +18,17 @@ export class TaskService {
 
   get_personal_tasks(): Observable<Task[]> {
     let url: string = `${this.BASE_URL}/personal/802364584`;
-    return this.http.get<Task[]>('http://localhost:5000/task/personal/802364584');
+    return this.http.get<Task[]>(url);
   }
 
-  get_study_tasks(): Promise<any> {
-    let url: string = `${this.BASE_URL}/study`;
-    return this.http.get(url).toPromise();
+  get_course_tasks(): Observable<Task[]> {
+    let url: string = `${this.BASE_URL}/course/802364584`;
+    return this.http.get<Task[]>(url);
+  }
+
+  get_study_tasks(): Observable<Task[]> {
+    let url: string = `${this.BASE_URL}/study/802364584`;
+    return this.http.get<Task[]>(url);
   }
 
   get_all() {
