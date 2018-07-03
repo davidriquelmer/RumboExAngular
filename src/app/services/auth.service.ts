@@ -15,6 +15,11 @@ export class AuthService {
     return this.http.post(url, user, {headers: this.httpheaders}).toPromise();
   }
 
+  adminlogin(user): Promise<any> {
+    let url: string = `${this.BASE_URL}/adminlogin`;
+    return this.http.post(url, user, {headers: this.httpheaders}).toPromise();
+  }
+
   register(user): Promise<any> {
     let url: string = `${this.BASE_URL}/register`;
     return this.http.post(url, user, {headers: this.httpheaders}).toPromise();

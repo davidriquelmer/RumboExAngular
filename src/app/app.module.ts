@@ -8,18 +8,19 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/logins/login/login.component';
 import { AuthService } from './services/auth.service';
 import { StatusComponent } from './components/status/status.component';
-import { EnsureAuthenticatedService } from './services/ensure-authenticated.service';
-import { LoginRedirectService } from './services/login-redirect.service';
 import { MainComponent } from './components/main/main.component';
 import { ScheduleComponent } from './components/schedule/schedule.component';
 import { LogoutComponent } from './components/logout/logout.component';
-import { AuthGuard} from './auth.guard';
+import { AuthGuard} from './guards/auth.guard';
 
-import {TaskService} from './services/task.service';
+import { TaskService } from './services/task.service';
 import { AdminloginComponent } from './components/logins/adminlogin/adminlogin.component';
 import { StudentloginComponent } from './components/logins/studentlogin/studentlogin.component';
 import { CounselorloginComponent } from './components/logins/counselorlogin/counselorlogin.component';
 import { MentorloginComponent } from './components/logins/mentorlogin/mentorlogin.component';
+import { ProfessorloginComponent } from './components/logins/professorlogin/professorlogin.component';
+import { RegisterComponent } from './components/register/register.component';
+import {AdminGuard} from './guards/admin.guard';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,9 @@ import { MentorloginComponent } from './components/logins/mentorlogin/mentorlogi
     AdminloginComponent,
     StudentloginComponent,
     CounselorloginComponent,
-    MentorloginComponent
+    MentorloginComponent,
+    ProfessorloginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -40,14 +43,19 @@ import { MentorloginComponent } from './components/logins/mentorlogin/mentorlogi
     HttpClientModule,
     RouterModule.forRoot([
       { path: 'login', component: LoginComponent },
-      { path: 'status', component: StatusComponent, },
+      { path: 'adminlogin', component: AdminloginComponent },
+      { path: 'studentlogin', component: StudentloginComponent },
+      { path: 'counselorlogin', component: CounselorloginComponent },
+      { path: 'mentorlogin', component: MentorloginComponent },
+      { path: 'professorlogin', component: ProfessorloginComponent },
+      { path: 'register', component: RegisterComponent},
+      { path: 'status', component: StatusComponent},
       { path: 'schedule', component: ScheduleComponent, canActivate: [AuthGuard] },
       { path: 'main', component: MainComponent,  canActivate: [AuthGuard] },
-      { path: 'logout', component: LogoutComponent, }
+      { path: 'logout', component: LogoutComponent, canActivate: [AuthGuard] }
     ])
   ],
-  providers: [AuthService, EnsureAuthenticatedService,
-    LoginRedirectService, TaskService, AuthGuard],
+  providers: [AuthService, TaskService, AuthGuard, AdminGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
