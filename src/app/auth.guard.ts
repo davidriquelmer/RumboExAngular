@@ -7,6 +7,7 @@ import { AuthService } from './services/auth.service';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
+  localStorage
 
   constructor(private auth: AuthService){
 
@@ -15,6 +16,10 @@ export class AuthGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    return false;
+    try {
+      return Boolean(sessionStorage.getItem('logged'));
+    } catch {
+      return false;
+    }
   }
 }
