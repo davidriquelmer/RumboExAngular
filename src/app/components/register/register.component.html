@@ -1,0 +1,41 @@
+<div class="unix-login" *ngIf="user">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-4">
+                <div class="registration-content card">
+                    <div class="registration-form">
+                        <h4>Registration</h4>
+                        <form  (ngSubmit)="registration()" novalidate #registrationForm="ngForm">
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" class="form-control" placeholder="name" [(ngModel)]="user.name" name="name">
+                            </div>
+                            <div class="form-group">
+                                <label>Lastname</label>
+                                <input type="text" class="form-control" placeholder="lastname" [(ngModel)]="user.lastname" name="lastname">
+                            </div>
+                            <div class="form-group">
+                                <label>E-Mail</label>
+                                <input type="text" class="form-control" placeholder="email" [(ngModel)]="user.email" name="email">
+                            </div>
+                            <div class="form-group">
+                                <label>Program Id Number</label>
+                                <input type="text" class="form-control" placeholder="program" [(ngModel)]="user.program" name="program">
+                            </div>
+                            <div class="form-group">
+                                <label>Student Number</label>
+                                <input type="text" class="form-control" placeholder="student_num" [(ngModel)]="user.student_num" name="student_num">
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="password" class="form-control" placeholder="password" [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}">
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">Sign in</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
