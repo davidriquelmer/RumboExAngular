@@ -21,6 +21,8 @@ import { MentorloginComponent } from './components/logins/mentorlogin/mentorlogi
 import { ProfessorloginComponent } from './components/logins/professorlogin/professorlogin.component';
 import { RegisterComponent } from './components/register/register.component';
 import {AdminGuard} from './guards/admin.guard';
+import { StudentGuard } from './guards/student.guard';
+import { AdvisorloginComponent } from './components/logins/advisorlogin/advisorlogin.component';
 
 @NgModule({
   declarations: [
@@ -35,19 +37,22 @@ import {AdminGuard} from './guards/admin.guard';
     CounselorloginComponent,
     MentorloginComponent,
     ProfessorloginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AdvisorloginComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot([
+      // This part are the login's. They don't use guard. (The guard of the login is practically the code in flask.)
       { path: 'login', component: LoginComponent },
       { path: 'adminlogin', component: AdminloginComponent },
       { path: 'studentlogin', component: StudentloginComponent },
       { path: 'counselorlogin', component: CounselorloginComponent },
       { path: 'mentorlogin', component: MentorloginComponent },
       { path: 'professorlogin', component: ProfessorloginComponent },
+      // This things haves to be guarded and classified
       { path: 'register', component: RegisterComponent, canActivate: [AdminGuard]},
       { path: 'status', component: StatusComponent},
       { path: 'schedule', component: ScheduleComponent, canActivate: [AuthGuard] },
@@ -55,7 +60,9 @@ import {AdminGuard} from './guards/admin.guard';
       { path: 'logout', component: LogoutComponent, canActivate: [AuthGuard] }
     ])
   ],
-  providers: [AuthService, TaskService, AuthGuard, AdminGuard],
+  // Each guard just check that the user have an specific characteristic to authorize the navegation. In this case it checks that the user
+  // have the role to enter the respective pages. It is like and RBAC but for Angular.
+  providers: [AuthService, TaskService, AuthGuard, AdminGuard, StudentGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -4,11 +4,11 @@ import {User} from '../../../models/user';
 import {AuthService} from '../../../services/auth.service';
 
 @Component({
-  selector: 'app-counselorlogin',
-  templateUrl: './counselorlogin.component.html',
-  styleUrls: ['./counselorlogin.component.css']
+  selector: 'app-advisorlogin',
+  templateUrl: './advisorlogin.component.html',
+  styleUrls: ['./advisorlogin.component.css']
 })
-export class CounselorloginComponent implements OnInit {
+export class AdvisorloginComponent implements OnInit {
   user: User = new User();
 
   constructor(private auth: AuthService, private router: Router) { }
@@ -17,7 +17,7 @@ export class CounselorloginComponent implements OnInit {
   }
 
   onLogin(): void {
-    this.auth.counselorlogin(this.user)
+    this.auth.advisorlogin(this.user)
     .then((user) => {
       sessionStorage.setItem('userid', user.result.userid);
       sessionStorage.setItem('username', user.result.username);

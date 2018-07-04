@@ -20,6 +20,31 @@ export class AuthService {
     return this.http.post(url, user, {headers: this.httpheaders}).toPromise();
   }
 
+  studentlogin(user): Promise<any> {
+    let url: string = `${this.BASE_URL}/studentlogin`;
+    return this.http.post(url, user, {headers: this.httpheaders}).toPromise();
+  }
+
+  counselorlogin(user): Promise<any> {
+    let url: string = `${this.BASE_URL}/counselorlogin`;
+    return this.http.post(url, user, {headers: this.httpheaders}).toPromise();
+  }
+
+  mentorlogin(user): Promise<any> {
+    let url: string = `${this.BASE_URL}/mentorlogin`;
+    return this.http.post(url, user, {headers: this.httpheaders}).toPromise();
+  }
+
+  professorlogin(user): Promise<any> {
+    let url: string = `${this.BASE_URL}/professorlogin`;
+    return this.http.post(url, user, {headers: this.httpheaders}).toPromise();
+  }
+
+  advisorlogin(user): Promise<any> {
+    let url: string = `${this.BASE_URL}/advisorlogin`;
+    return this.http.post(url, user, {headers: this.httpheaders}).toPromise();
+  }
+
   register(user): Promise<any> {
     let url: string = `${this.BASE_URL}/register`;
     return this.http.post(url, user, {headers: this.httpheaders}).toPromise();

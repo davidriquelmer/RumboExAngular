@@ -21,10 +21,11 @@ export class LogoutComponent implements OnInit {
       sessionStorage.removeItem('userid');
       sessionStorage.removeItem('username');
       sessionStorage.removeItem('email');
+      let role: String = sessionStorage.getItem('role');
       sessionStorage.removeItem('role');
       sessionStorage.removeItem('token');
       sessionStorage.removeItem('logged');
-      this.router.navigate(['/login']);
+      this.router.navigate(['/' + role + 'login']);
     })
     .catch((err) => {
       console.log(err);
