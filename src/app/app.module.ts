@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/logins/login/login.component';
 import { AuthService } from './services/auth.service';
 import { StatusComponent } from './components/status/status.component';
-import { MainComponent } from './components/main/main.component';
+import { MainComponent } from './components/mains/main/main.component';
 import { ScheduleComponent } from './components/schedule/schedule.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { AuthGuard} from './guards/auth.guard';
@@ -23,6 +23,9 @@ import { RegisterComponent } from './components/register/register.component';
 import {AdminGuard} from './guards/admin.guard';
 import { StudentGuard } from './guards/student.guard';
 import { AdvisorloginComponent } from './components/logins/advisorlogin/advisorlogin.component';
+import { CounselormainComponent } from './components/mains/counselormain/counselormain.component';
+import { AdminmainComponent } from './components/mains/adminmain/adminmain.component';
+import {StudentService} from './services/student.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,9 @@ import { AdvisorloginComponent } from './components/logins/advisorlogin/advisorl
     MentorloginComponent,
     ProfessorloginComponent,
     RegisterComponent,
-    AdvisorloginComponent
+    AdvisorloginComponent,
+    CounselormainComponent,
+    AdminmainComponent
   ],
   imports: [
     BrowserModule,
@@ -54,16 +59,17 @@ import { AdvisorloginComponent } from './components/logins/advisorlogin/advisorl
       { path: 'professorlogin', component: ProfessorloginComponent },
       { path: 'advisorlogin', component: AdvisorloginComponent },
       // This things haves to be guarded and classified
+      { path: 'logout', component: LogoutComponent, canActivate: [AuthGuard] },
       { path: 'register', component: RegisterComponent, canActivate: [AdminGuard]},
       { path: 'status', component: StatusComponent},
       { path: 'schedule', component: ScheduleComponent, canActivate: [AuthGuard] },
       { path: 'main', component: MainComponent,  canActivate: [AuthGuard] },
-      { path: 'logout', component: LogoutComponent, canActivate: [AuthGuard] }
+      { path: 'adminmain', component: AdminmainComponent, canActivate: [AdminGuard]}
     ])
   ],
   // Each guard just check that the user have an specific characteristic to authorize the navegation. In this case it checks that the user
   // have the role to enter the respective pages. It is like and RBAC but for Angular.
-  providers: [AuthService, TaskService, AuthGuard, AdminGuard, StudentGuard],
+  providers: [AuthService, TaskService, AuthGuard, AdminGuard, StudentGuard, StudentService],
   bootstrap: [AppComponent]
 })
 
