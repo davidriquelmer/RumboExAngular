@@ -52,6 +52,7 @@ import { AdvisorloginComponent } from './components/logins/advisorlogin/advisorl
       { path: 'counselorlogin', component: CounselorloginComponent },
       { path: 'mentorlogin', component: MentorloginComponent },
       { path: 'professorlogin', component: ProfessorloginComponent },
+      { path: 'advisorlogin', component: AdvisorloginComponent },
       // This things haves to be guarded and classified
       { path: 'register', component: RegisterComponent, canActivate: [AdminGuard]},
       { path: 'status', component: StatusComponent},
@@ -65,4 +66,5 @@ import { AdvisorloginComponent } from './components/logins/advisorlogin/advisorl
   providers: [AuthService, TaskService, AuthGuard, AdminGuard, StudentGuard],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
