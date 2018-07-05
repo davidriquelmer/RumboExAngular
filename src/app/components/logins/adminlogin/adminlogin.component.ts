@@ -32,7 +32,7 @@ export class AdminloginComponent implements OnInit {
       console.log(sessionStorage.getItem('username'));
       console.log(sessionStorage.getItem('email'));
       console.log(sessionStorage.getItem('role'));
-      this.router.navigate(['/adminmain']);
+      this.router.navigate(['/register']);
     })
     .catch((err) => {
       console.log(err);
