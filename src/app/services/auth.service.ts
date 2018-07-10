@@ -6,8 +6,8 @@ import { User } from '../models/user';
   providedIn: 'root'
 })
 export class AuthService {
-  private BASE_URL: string = 'http://localhost:5000';
-  private httpheaders: HttpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
+  private BASE_URL: string = 'http://127.0.0.1:5000';
+  private httpheaders: HttpHeaders = new HttpHeaders({'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'});
   constructor(private http: HttpClient) { }
 
   login(user): Promise<any> {

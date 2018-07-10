@@ -16,11 +16,10 @@ user: User = new User();
   ngOnInit() {
   }
 
-
   registration(): void {
     this.auth.register(this.user)
     .then((user) => {
-      console.log(user)
+      console.log(user);
       this.router.navigate(['/main']);
     })
     .catch((err) => {
