@@ -18,11 +18,10 @@ export class AdminGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     {
       if (Boolean(sessionStorage.getItem('logged')) && sessionStorage.getItem('role') === 'admin') {
-        console.log(this.loc);
         return true;
       }
       else {
-        console.log(this.loc.back());
+        this.loc.back();
       }
       return false;
     }

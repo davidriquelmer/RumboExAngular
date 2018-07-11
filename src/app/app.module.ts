@@ -26,6 +26,7 @@ import { AdvisorloginComponent } from './components/logins/advisorlogin/advisorl
 import { CounselormainComponent } from './components/mains/counselormain/counselormain.component';
 import { AdminmainComponent } from './components/mains/adminmain/adminmain.component';
 import {StudentService} from './services/student.service';
+import { ErroralertDirective } from './erroralert.directive';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import {StudentService} from './services/student.service';
     RegisterComponent,
     AdvisorloginComponent,
     CounselormainComponent,
-    AdminmainComponent
+    AdminmainComponent,
+    ErroralertDirective
   ],
   imports: [
     BrowserModule,
