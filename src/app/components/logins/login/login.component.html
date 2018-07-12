@@ -5,7 +5,7 @@
                 <div class="login-content card">
                     <div class="login-form">
                       <h4>Login</h4>
-                      <div *ngIf="true" class="alert alert-danger" role="alert" appErroralert> {{error_msg()}}</div>
+                      <app-erroralert></app-erroralert>
                         <form  (ngSubmit)="onLogin()" novalidate #loginForm="ngForm">
                             <div class="form-group">
                                 <label>Username</label>

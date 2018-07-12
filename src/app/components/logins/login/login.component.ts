@@ -3,7 +3,6 @@ import { AuthService} from '../../../services/auth.service';
 import { Router } from '@angular/router';
 import { User } from '../../../models/user';
 import { ErroralertService } from '../../../services/erroralert.service';
-import { ErroralertDirective } from '../../../erroralert.directive';
 
 @Component({
   selector: 'app-login',
@@ -22,6 +21,7 @@ export class LoginComponent implements OnInit {
   onLogin(): void {
     this.auth.login(this.user)
     .then((user) => {
+      this.error.hidemessage();
       sessionStorage.setItem('userid', user.result.userid);
       sessionStorage.setItem('username', user.result.username);
       sessionStorage.setItem('email', user.result.email);
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
     })
     .catch((err) => {
       console.log(err);
-      this.error.displaymessage("Incorrect credentials. Try again!")
+      this.error.displaymessage("Incorrect credentials. Try again!");
     });
   }
 
