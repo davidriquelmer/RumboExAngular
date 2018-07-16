@@ -26,6 +26,8 @@ import { AdvisorloginComponent } from './components/logins/advisorlogin/advisorl
 import { CounselormainComponent } from './components/mains/counselormain/counselormain.component';
 import { AdminmainComponent } from './components/mains/adminmain/adminmain.component';
 import {StudentService} from './services/student.service';
+import {ErroralertService} from './services/erroralert.service';
+import { ErroralertComponent } from './components/erroralert/erroralert.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,8 @@ import {StudentService} from './services/student.service';
     RegisterComponent,
     AdvisorloginComponent,
     CounselormainComponent,
-    AdminmainComponent
+    AdminmainComponent,
+    ErroralertComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +72,7 @@ import {StudentService} from './services/student.service';
   ],
   // Each guard just check that the user have an specific characteristic to authorize the navegation. In this case it checks that the user
   // have the role to enter the respective pages. It is like and RBAC but for Angular.
-  providers: [AuthService, TaskService, AuthGuard, AdminGuard, StudentGuard, StudentService],
+  providers: [AuthService, TaskService, AuthGuard, AdminGuard, StudentGuard, StudentService, ErroralertService],
   bootstrap: [AppComponent]
 })
 

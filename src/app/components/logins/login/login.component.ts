@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService} from '../../../services/auth.service';
 import { Router } from '@angular/router';
-import {User} from '../../../models/user';
+import { User } from '../../../models/user';
+import { ErroralertService } from '../../../services/erroralert.service';
 
 @Component({
   selector: 'app-login',
@@ -10,21 +11,22 @@ import {User} from '../../../models/user';
 })
 export class LoginComponent implements OnInit {
   user: User = new User();
+  fail: Boolean = false;
 
-  constructor(private auth: AuthService, private router: Router) { }
+  constructor(private auth: AuthService, private router: Router, private error: ErroralertService) { }
 
   ngOnInit() {
   }
 
-
   onLogin(): void {
     this.auth.login(this.user)
     .then((user) => {
+      this.error.hidemessage();
       sessionStorage.setItem('userid', user.result.userid);
       sessionStorage.setItem('username', user.result.username);
       sessionStorage.setItem('email', user.result.email);
       sessionStorage.setItem('role', user.result.roles[0]);
-      sessionStorage.setItem('token', user);
+      sessionStorage.setItem('token', user.auth_token);
       sessionStorage.setItem('logged', 'true');
       // The complete object
       // console.log(user);
@@ -37,6 +39,7 @@ export class LoginComponent implements OnInit {
     })
     .catch((err) => {
       console.log(err);
+      this.error.displaymessage("Incorrect credentials. Try again!");
     });
   }
 

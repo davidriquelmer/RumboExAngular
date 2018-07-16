@@ -26,7 +26,6 @@ export class LogoutComponent implements OnInit {
       sessionStorage.removeItem('token');
       sessionStorage.removeItem('logged');
       this.router.navigate(['/' + role + 'login']);
-      console.log("passed the part where it makes the call...")
     })
     .catch((err) => {
       console.log(err);
