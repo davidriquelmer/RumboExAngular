@@ -1,12 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from "../../models/task";
 import { TaskService} from "../../services/task.service";
+import {PopoverService} from '../../services/popover.service';
+import {ModalService} from "../../services/modal.service";
+import {PopoverComponent} from "../popover/popover.component";
+import {AuthService} from "../../services/auth.service";
 import * as $ from 'jquery';
+import PopperJs from 'popper.js';
+import 'jqueryui';
 import 'fullcalendar';
 import 'fullcalendar-scheduler';
 import {now} from "moment";
 import {TaskLogger} from "protractor/built/taskLogger";
-import {p} from "@angular/core/src/render3";
+import {p, renderComponent} from "@angular/core/src/render3";
+import Popper from "popper.js";
+import {renderTemplate} from "@angular/core/src/render3/instructions";
 
 
 @Component({
@@ -14,133 +22,75 @@ import {p} from "@angular/core/src/render3";
   templateUrl: './schedule.component.html',
   styleUrls: ['./schedule.component.css']
 })
+
 export class ScheduleComponent implements OnInit {
 
-  constructor(private taskService: TaskService) {}
+
+  constructor(private taskService: TaskService,
+              private popoverService: PopoverService,
+              private modal: ModalService) {}
+
 
   ngOnInit() {
 
-
-    var popTemplate = [
-    '<div class="popover" style="max-width:600px;" >',
-    '<div class="arrow"></div>',
-    '<div class="popover-header">',
-    '<button id="closepopover" type="button" class="close" aria-hidden="true">&times;</button>',
-    '<h3 class="popover-title"></h3>',
-    '</div>',
-    '<div class="popover-content"></div>',
-    '</div>'].join('');
-
+    this.showNewEventModal();
+    var curr_user_id = sessionStorage.getItem('userid');
 
     // Trying to fetch tasks from Service pero no me sale :(
-    var personal_tasks;
-    this.taskService.get_personal_tasks().subscribe(tasks => personal_tasks = tasks);
-    console.log(personal_tasks);
+
+    var modal = this.modal;
+    var study_tasks = [];
+    var course_tasks = [];
 
 
-    $(function() {
+    $(function () {
       let containerEl: JQuery = $('#calendar');
       containerEl.fullCalendar({
         schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source',
         header: {
-          left: 'prev,next today',
+          left: 'prev,next today addEventButton',
           center: 'title',
-          right: 'addEventButton month,agendaWeek,agendaDay,listWeek'
+          right: 'month,agendaWeek,agendaDay,listWeek'
         },
-        customButtons: {
-          addEventButton: {
-            text: 'new task',
-            click: function () {
-
-              var dateStr = prompt('Enter a date in YYYY-MM-DD format');
-              // var date = moment(dateStr);
-
-              // if (date.isValid()) {
-              //   $('#calendar').fullCalendar('renderEvent', {
-              //     title: 'dynamic event',
-              //     start: date,
-              //     allDay: true
-              //   });
-              //   alert('Great. Now, update your database...');
-              // } else {
-              //   alert('Invalid date.');
-              // }
-            }
-          }
-        },
-        defaultDate: 'Thu, 28 Jun 2018 13:30:00 GMT', // cambiar a now() cuando termine de test
+        // customButtons: {
+        //     addEventButton: {
+        //       text: 'new task',
+        //
+        //
+        //     click: function () {
+        //         this.showNewEventModal();
+        //     }
+        //   }
+        // },
+        defaultDate: now(),
         navLinks: true, // can click day/week names to navigate views
         editable: false, // cannot move an event to another date
         eventLimit: true, // allow "more" link when too many events
         eventSources: [
           {
-            url: "http://localhost:5000/task/personal/802364584",
+            // events: this.tasks['personal'],
+            url: "http://localhost:5000/task/personal/" + curr_user_id,
             color: "blue"
           },
           {
-            url: "http://localhost:5000/task/course/802364584",
+            url: "http://localhost:5000/task/course/" + curr_user_id,
             color: "red"
           },
           {
-            url: "http://localhost:5000/task/study/802364584",
+            url: "http://localhost:5000/task/study/" + curr_user_id,
             color: "green"
           }
         ],
+        eventTextColor:"white",
 
-        select: function (start, end, jsEvent) {
-          closePopovers();
-          popoverElement = $(jsEvent.target);
-          $(jsEvent.target).popover({
-              title: 'the title',
-              content: function () {
-                  return $("#popoverContent").html();
-              },
-              template: popTemplate,
-              placement: 'left',
-              html: true,
-              trigger: 'click',
-              animation: true,
-              container: 'body'
-          }).popover('show');
+        eventClick: function(event, jsEvent, view) {
+          this.renderPopover(event, jsEvent, view);
+
         },
+        eventRender: function(eventObj, $el) {
 
-        eventClick: function (calEvent, jsEvent, view) {
-        //closePopovers();
-          popoverElement = $(jsEvent.currentTarget);
-        },
-
-        //esta funcion hace que los eventos se borren
-
-        // eventRender: function (event, element) {
-        //   element.popover({
-        //     title: 'the title',
-        //     content: function () {
-        //         return $("#popoverContent").html();
-        //     },
-        //     template: popTemplate,
-        //     placement: 'left',
-        //     html: true,
-        //     trigger: 'click',
-        //     animation: true,
-        //     container: 'body'
-        //   });
-        // },
+        }
       });
-    });
-
-    var popoverElement;
-
-    function closePopovers() {
-        $('.popover').not(this).popover('hide');
-    }
-
-    $('body').on('click', function (e) {
-      // close the popover if: click outside of the popover || click on the close button of the popover
-      if (popoverElement && ((!popoverElement.is(e.target) && popoverElement.has(e.target).length === 0 && $('.popover').has(e.target).length === 0) || (popoverElement.has(e.target) && e.target.id === 'closepopover'))) {
-
-          ///$('.popover').popover('hide'); --> works
-          closePopovers();
-      }
     });
 
     $(function() {
@@ -158,6 +108,24 @@ export class ScheduleComponent implements OnInit {
         }
       });
     });
+  }
+
+  renderPopover(event, jsEvent, view): void {
+      // console.log(this.popoverService);
+      if(this.popoverService.is_open()){
+        alert('popover is already open');
+        this.popoverService.show_popover(event);
+      }
+      else {
+        this.popoverService.show_popover(event);
+
+      }
+    }
+
+  showNewEventModal() {
+    console.log(this.modal);
+    this.modal.open();
+
   }
 
 }

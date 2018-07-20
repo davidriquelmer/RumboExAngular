@@ -1,7 +1,8 @@
+import { MbscModule } from '@mobiscroll/angular';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -28,6 +29,44 @@ import { AdminmainComponent } from './components/mains/adminmain/adminmain.compo
 import {StudentService} from './services/student.service';
 import {ErroralertService} from './services/erroralert.service';
 import { ErroralertComponent } from './components/erroralert/erroralert.component';
+import { PopoverComponent } from './components/popover/popover.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { SidebarComponent } from './components/sharedComponents/sidebar/sidebar.component';
+import { TopnavbarComponent } from './components/sharedComponents/topnavbar/topnavbar.component';
+import { BreadcrumbComponent } from './components/sharedComponents/breadcrumb/breadcrumb.component';
+import { DashboardComponent } from './components/sharedComponents/dashboard/dashboard.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
+import { DailyScheduleComponent } from './components/daily-schedule/daily-schedule.component';
+import { WeeklyScheduleComponent } from './components/weekly-schedule/weekly-schedule.component';
+
+const appRoutes: Routes = [
+  { path: 'schedule/calendar', component: CalendarComponent, outlet: 'content' },
+  { path: 'schedule/today', component: DailyScheduleComponent, outlet: 'content' },
+  { path: 'schedule/this-week', component: WeeklyScheduleComponent, outlet: 'content' }
+];
+
+const loginRoutes: Routes = [
+  // This part are the login's. They don't use guard. (The guard of the login is practically the code in flask.)
+  { path: 'login', component: LoginComponent },
+  { path: 'adminlogin', component: AdminloginComponent },
+  { path: 'studentlogin', component: StudentloginComponent },
+  { path: 'counselorlogin', component: CounselorloginComponent },
+  { path: 'mentorlogin', component: MentorloginComponent },
+  { path: 'professorlogin', component: ProfessorloginComponent },
+  { path: 'advisorlogin', component: AdvisorloginComponent }
+];
+
+const otherRoutes: Routes = [
+  // This things haves to be guarded and classified
+  { path: 'logout', component: LogoutComponent, canActivate: [AuthGuard] },
+  { path: 'register', component: RegisterComponent, canActivate: [AdminGuard]},
+  { path: 'status', component: StatusComponent},
+  { path: 'schedule', component: ScheduleComponent, canActivate: [AuthGuard] },
+  { path: 'main', component: MainComponent,  canActivate: [AuthGuard]},
+  { path: 'adminmain', component: AdminmainComponent, canActivate: [AdminGuard]}
+];
+
+const routes = Array.prototype.concat(appRoutes, loginRoutes, otherRoutes);
 
 @NgModule({
   declarations: [
@@ -46,29 +85,23 @@ import { ErroralertComponent } from './components/erroralert/erroralert.componen
     AdvisorloginComponent,
     CounselormainComponent,
     AdminmainComponent,
-    ErroralertComponent
+    ErroralertComponent,
+    PopoverComponent,
+    ModalComponent,
+    SidebarComponent,
+    TopnavbarComponent,
+    BreadcrumbComponent,
+    DashboardComponent,
+    CalendarComponent,
+    DailyScheduleComponent,
+    WeeklyScheduleComponent
   ],
   imports: [
+    MbscModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot([
-      // This part are the login's. They don't use guard. (The guard of the login is practically the code in flask.)
-      { path: 'login', component: LoginComponent },
-      { path: 'adminlogin', component: AdminloginComponent },
-      { path: 'studentlogin', component: StudentloginComponent },
-      { path: 'counselorlogin', component: CounselorloginComponent },
-      { path: 'mentorlogin', component: MentorloginComponent },
-      { path: 'professorlogin', component: ProfessorloginComponent },
-      { path: 'advisorlogin', component: AdvisorloginComponent },
-      // This things haves to be guarded and classified
-      { path: 'logout', component: LogoutComponent, canActivate: [AuthGuard] },
-      { path: 'register', component: RegisterComponent, canActivate: [AdminGuard]},
-      { path: 'status', component: StatusComponent},
-      { path: 'schedule', component: ScheduleComponent, canActivate: [AuthGuard] },
-      { path: 'main', component: MainComponent,  canActivate: [AuthGuard] },
-      { path: 'adminmain', component: AdminmainComponent, canActivate: [AdminGuard]}
-    ])
+    RouterModule.forRoot(routes)
   ],
   // Each guard just check that the user have an specific characteristic to authorize the navegation. In this case it checks that the user
   // have the role to enter the respective pages. It is like and RBAC but for Angular.
