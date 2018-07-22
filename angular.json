@@ -24,13 +24,19 @@
               "src/images"
             ],
             "styles": [
+              "src/styles.css",
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/css/helper.css",
-              { "input": "src/css/style.css", "bundleName": "style2" },
+              {
+                "input": "src/css/style.css",
+                "bundleName": "style2"
+              },
               "./node_modules/fullcalendar/dist/fullcalendar.css",
-              "./node_modules/fullcalendar-scheduler/dist/scheduler.css"
+              "./node_modules/fullcalendar-scheduler/dist/scheduler.css",
+              "./node_modules/@mobiscroll/angular/dist/css/mobiscroll.min.css"
             ],
-            "scripts": ["./node_modules/jquery/dist/jquery.min.js",
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.min.js",
               "src/js/lib/bootstrap/js/popper.min.js",
               "./node_modules/bootstrap/dist/js/bootstrap.min.js",
               "src/js/jquery.slimscroll.js",

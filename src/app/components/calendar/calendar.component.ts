@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { mobiscroll } from '@mobiscroll/angular';
+import { TaskService } from "../../services/task.service";
 
 mobiscroll.settings = {
     theme: 'web'
@@ -15,9 +16,18 @@ var now = new Date();
 
 export class CalendarComponent {
 
-  // current_user_id = sessionStorage.getItem('user_id');
+  constructor() {}
 
-  // personal_tasks = this.taskService.get_personal_tasks(this.current_user_id);
+  taskService: TaskService;
+
+  current_user_id = sessionStorage.getItem('user_id');
+
+  personal_tasks = this.taskService.get_personal_tasks(this.current_user_id);
+
+  ngOnInit() {
+    console.log(this.personal_tasks);
+  }
+
 
     labelDays: Array<any> =
       [
