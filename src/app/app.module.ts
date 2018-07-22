@@ -39,6 +39,8 @@ import { DashboardComponent } from './components/sharedComponents/dashboard/dash
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { DailyScheduleComponent } from './components/daily-schedule/daily-schedule.component';
 import { WeeklyScheduleComponent } from './components/weekly-schedule/weekly-schedule.component';
+import { NewTaskFormComponent } from './components/new-task-form/new-task-form.component';
+import { WidgetComponent } from './components/widget/widget.component';
 
 // const appRoutes: Routes = [
 //   { path: 'schedule/calendar', component: CalendarComponent },
@@ -95,7 +97,9 @@ import { WeeklyScheduleComponent } from './components/weekly-schedule/weekly-sch
     DashboardComponent,
     CalendarComponent,
     DailyScheduleComponent,
-    WeeklyScheduleComponent
+    WeeklyScheduleComponent,
+    NewTaskFormComponent,
+    WidgetComponent
   ],
   imports: [
     MbscModule,

@@ -1,0 +1,38 @@
+<mbsc-form>
+    <div class="mbsc-form-group">
+        <div class="mbsc-form-group-title">Without return value</div>
+        <div class="mbsc-btn-group-block">
+            <mbsc-button (click)="widget.instance.show()">Show Widget</mbsc-button>
+        </div>
+    </div>
+    <div class="mbsc-form-group">
+        <div class="mbsc-form-group-title">With return value</div>
+        <label> Update
+            <input (click)="list.instance.show()" [ngModel]="checked" placeholder="Please Select..." readonly />
+        </label>
+    </div>
+</mbsc-form>
+
+<mbsc-widget [options]="settings" #widget="mobiscroll">
+    <div class="mbsc-align-center mbsc-padding">
+        <img src="https://img.mobiscroll.com/demos/f1.png">
+        <h3>Liza Taylor</h3>
+        <p>liza.taylor@mobiscroll.com <br> (202) 555-0127</p>
+    </div>
+</mbsc-widget>
+
+<mbsc-widget [options]="listSettings" #list="mobiscroll">
+    <mbsc-form>
+        <div class="mbsc-form-group-inset">
+            <p>Some updates are available for you. <br> When would you like to install them?</p>
+        </div>
+        <div class="mbsc-form-group-inset">
+            <mbsc-radio-group [(ngModel)]="update" name="update">
+                <mbsc-radio value="Right now">Right now</mbsc-radio>
+                <mbsc-radio value="Later on today">Later on today</mbsc-radio>
+                <mbsc-radio value="Remind me later">Remind me later</mbsc-radio>
+            </mbsc-radio-group>
+        </div>
+    </mbsc-form>
+</mbsc-widget>
+

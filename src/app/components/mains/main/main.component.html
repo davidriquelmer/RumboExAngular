@@ -22,11 +22,11 @@
               <li class="nav-label">Schedule</li>
               <li> <a class="has-arrow  " href aria-expanded="false"><i class="fa fa-envelope"></i><span class="hide-menu">Schedule</span></a>
                   <ul aria-expanded="false" class="collapse">
-                      <li><a routerLink="/schedule/today" routerLinkActive="active">Today</a></li>
-                      <li><a routerLink="/schedule/tomorrow" routerLinkActive="active">Tomorrow</a></li>
-                      <li><a routerLink="/schedule/this-week" routerLinkActive="active">This Week</a></li>
-                      <li><a routerLink="/schedule/next-week" routerLinkActive="active">Next Week</a></li>
-                      <li><a routerLink="/schedule/calendar" routerLinkActive="active">Calendar</a></li>
+                      <li><a [routerLink]="[{ outlets: { content: ['schedule/today'] } }]">Today</a></li>
+                      <li><a [routerLink]="[{ outlets: { content: ['schedule/tomorrow'] } }]">Tomorrow</a></li>
+                      <li><a [routerLink]="[{ outlets: { content: ['schedule/this-week'] } }]">This Week</a></li>
+                      <li><a [routerLink]="[{ outlets: { content: ['schedule/next-week'] } }]">Next Week</a></li>
+                      <li><a [routerLink]="[{ outlets: { content: ['schedule/calendar'] } }]">Calendar</a></li>
                   </ul>
               </li>
           </ul>
@@ -43,7 +43,12 @@
   <app-breadcrumb></app-breadcrumb>
 
     <!-- Container fluid  -->
-    <div class="container-fluid"></div>
+    <div class="container-fluid">
+
+      <router-outlet name="content"></router-outlet>
+
+    </div>
+
     <!-- End Container fluid  -->
 </div>
 <!-- End Page wrapper  -->

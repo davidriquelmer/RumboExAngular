@@ -38,14 +38,15 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent, canActivate: [AdminGuard]},
   { path: 'status', component: StatusComponent},
   { path: 'schedule', component: ScheduleComponent, canActivate: [AuthGuard] },
-  { path: 'main', component: MainComponent,  canActivate: [AuthGuard]},
   { path: 'adminmain', component: AdminmainComponent, canActivate: [AdminGuard]},
 
   // Student app routes
-  { path: 'schedule/calendar', component: CalendarComponent, outlet: 'content' },
-  { path: 'schedule/today', component: DailyScheduleComponent, outlet: 'content' },
-  { path: 'schedule/this-week', component: WeeklyScheduleComponent, outlet: 'content' }
-
+  { path: 'main', component: MainComponent,  canActivate: [AuthGuard], children: [
+      { path: 'schedule/calendar', component: CalendarComponent, outlet: 'content' },
+      { path: 'schedule/today', component: DailyScheduleComponent, outlet: 'content' },
+      { path: 'schedule/this-week', component: WeeklyScheduleComponent, outlet: 'content' }
+    ]
+  },
 ];
 
 @NgModule({
