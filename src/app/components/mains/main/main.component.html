@@ -15,7 +15,7 @@
               <li> <a class="has-arrow  " href aria-expanded="false"><i class="fa fa-columns"></i><span class="hide-menu">Courses</span></a>
                   <ul aria-expanded="false" class="collapse">
                     <div *ngFor="let c of courses">
-                      <li><a [routerLink]="[ '/main', { outlets: { content: 'course' } }]">{{c.course_name}}</a></li>
+                      <li><a [routerLink]="[ '/main', { outlets: { content: 'course' } }]" [queryParams]="{ course: c }" >{{c.course_name}}</a></li>
                     </div>
                       <!--<li><a href="layout-blank.html">Cálculo I</a></li>-->
                       <!--<li><a href="layout-boxed.html">Física</a></li>-->

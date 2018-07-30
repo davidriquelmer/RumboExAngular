@@ -16,9 +16,12 @@ export class MainComponent {
 
   ngOnInit() {
 
-    var curr_user_id = sessionStorage.getItem('userid');
+    let curr_user_id = sessionStorage.getItem('userid');
 
-    this.courseService.get_courses(curr_user_id).subscribe(res => {this.courses = res; console.log(this.courses)});
+    this.courseService.get_courses(curr_user_id).subscribe(data => {
+      this.courses = data;
+      console.log('courses:', this.courses);
+    });
 
   }
 

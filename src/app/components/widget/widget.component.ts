@@ -22,9 +22,9 @@ export class WidgetComponent {
 
     listSettings: MbscWidgetOptions = {
         display: 'center',
-        onSet: (event, inst) => {
-            this.checked = this.update;
-        }
+        // onSet: (event, inst) => {
+        //     this.checked = this.update;
+        // }
     };
 
 }

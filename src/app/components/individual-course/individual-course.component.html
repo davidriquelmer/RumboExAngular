@@ -2,8 +2,8 @@
   <div >
     <mbsc-card [options]="settings">
         <mbsc-card-header>
-            <mbsc-card-title>CourseName</mbsc-card-title>
-            <mbsc-card-subtitle>Codification-Section</mbsc-card-subtitle>
+            <mbsc-card-title>{{course.name}}</mbsc-card-title>
+            <mbsc-card-subtitle>{{course.codification}} - {{course.section}}</mbsc-card-subtitle>
         </mbsc-card-header>
         <mbsc-card-footer>Progress Bar or something with numbers and colors</mbsc-card-footer>
     </mbsc-card>
@@ -20,8 +20,8 @@
   <div >
     <mbsc-card [options]="settings">
         <mbsc-card-content>
-            See tutors
-            Send email to professor
+          <p>See tutors</p>
+          <p>Send email to professor</p>
         </mbsc-card-content>
     </mbsc-card>
   </div>
