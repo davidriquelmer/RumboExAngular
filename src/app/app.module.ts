@@ -2,7 +2,6 @@ import { MbscModule } from '@mobiscroll/angular';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from "./app-routing.module";
 
@@ -41,6 +40,7 @@ import { DailyScheduleComponent } from './components/daily-schedule/daily-schedu
 import { WeeklyScheduleComponent } from './components/weekly-schedule/weekly-schedule.component';
 import { NewTaskFormComponent } from './components/new-task-form/new-task-form.component';
 import { WidgetComponent } from './components/widget/widget.component';
+import { Tester1Component } from './components/tester1/tester1.component';
 
 // const appRoutes: Routes = [
 //   { path: 'schedule/calendar', component: CalendarComponent },
@@ -99,7 +99,8 @@ import { WidgetComponent } from './components/widget/widget.component';
     DailyScheduleComponent,
     WeeklyScheduleComponent,
     NewTaskFormComponent,
-    WidgetComponent
+    WidgetComponent,
+    Tester1Component
   ],
   imports: [
     MbscModule,

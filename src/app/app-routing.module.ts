@@ -22,6 +22,8 @@ import {WeeklyScheduleComponent} from "./components/weekly-schedule/weekly-sched
 import {DailyScheduleComponent} from "./components/daily-schedule/daily-schedule.component";
 import {CalendarComponent} from "./components/calendar/calendar.component";
 
+import {Tester1Component} from "./components/tester1/tester1.component";
+
 const routes: Routes = [
 
   // This part are the login's. They don't use guard. (The guard of the login is practically the code in flask.)
@@ -37,20 +39,21 @@ const routes: Routes = [
   { path: 'logout', component: LogoutComponent, canActivate: [AuthGuard] },
   { path: 'register', component: RegisterComponent, canActivate: [AdminGuard]},
   { path: 'status', component: StatusComponent},
-  { path: 'schedule', component: ScheduleComponent, canActivate: [AuthGuard] },
+  // { path: 'schedule', component: ScheduleComponent, canActivate: [AuthGuard] },
   { path: 'adminmain', component: AdminmainComponent, canActivate: [AdminGuard]},
 
   // Student app routes
+  { path: '', redirectTo: '/main', pathMatch: 'full' },
   { path: 'main', component: MainComponent,  canActivate: [AuthGuard], children: [
-      { path: 'schedule/calendar', component: CalendarComponent, outlet: 'content' },
-      { path: 'schedule/today', component: DailyScheduleComponent, outlet: 'content' },
-      { path: 'schedule/this-week', component: WeeklyScheduleComponent, outlet: 'content' }
+      { path: 'calendar', component: CalendarComponent, outlet: 'content' },
+      { path: 'today', component: DailyScheduleComponent, outlet: 'content' },
+      { path: 'this-week', component: WeeklyScheduleComponent, outlet: 'content' }
     ]
-  },
+  }
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
+  imports: [ RouterModule.forRoot(routes, {useHash: true, enableTracing: true}) ],
   exports: [ RouterModule ]
 })
 

@@ -22,11 +22,12 @@
               <li class="nav-label">Schedule</li>
               <li> <a class="has-arrow  " href aria-expanded="false"><i class="fa fa-envelope"></i><span class="hide-menu">Schedule</span></a>
                   <ul aria-expanded="false" class="collapse">
-                      <li><a [routerLink]="[{ outlets: { content: ['schedule/today'] } }]">Today</a></li>
-                      <li><a [routerLink]="[{ outlets: { content: ['schedule/tomorrow'] } }]">Tomorrow</a></li>
-                      <li><a [routerLink]="[{ outlets: { content: ['schedule/this-week'] } }]">This Week</a></li>
-                      <li><a [routerLink]="[{ outlets: { content: ['schedule/next-week'] } }]">Next Week</a></li>
-                      <li><a [routerLink]="[{ outlets: { content: ['schedule/calendar'] } }]">Calendar</a></li>
+                      <li><a [routerLink]="[ '/main', { outlets: { content: 'today' } }]">Today</a></li>
+                      <li><a [routerLink]="[ '/main', { outlets: { content: 'calendar' } }]">Tomorrow</a></li>
+                      <li><a [routerLink]="[ '/main', { outlets: { content: 'this-week' } }]">This Week</a></li>
+                      <li><a [routerLink]="[ '/main', { outlets: { content: 'calendar' } }]">Next Week</a></li>
+                      <li><a [routerLink]="[ '/main', { outlets: { content: 'calendar' } }]">Calendar</a></li>
+
                   </ul>
               </li>
           </ul>
