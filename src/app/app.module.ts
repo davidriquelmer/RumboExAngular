@@ -41,6 +41,7 @@ import { WeeklyScheduleComponent } from './components/weekly-schedule/weekly-sch
 import { NewTaskFormComponent } from './components/new-task-form/new-task-form.component';
 import { WidgetComponent } from './components/widget/widget.component';
 import { Tester1Component } from './components/tester1/tester1.component';
+import { IndividualCourseComponent } from './components/individual-course/individual-course.component';
 
 // const appRoutes: Routes = [
 //   { path: 'schedule/calendar', component: CalendarComponent },
@@ -100,7 +101,8 @@ import { Tester1Component } from './components/tester1/tester1.component';
     WeeklyScheduleComponent,
     NewTaskFormComponent,
     WidgetComponent,
-    Tester1Component
+    Tester1Component,
+    IndividualCourseComponent
   ],
   imports: [
     MbscModule,

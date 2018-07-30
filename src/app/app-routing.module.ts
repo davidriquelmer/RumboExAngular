@@ -22,6 +22,8 @@ import {WeeklyScheduleComponent} from "./components/weekly-schedule/weekly-sched
 import {DailyScheduleComponent} from "./components/daily-schedule/daily-schedule.component";
 import {CalendarComponent} from "./components/calendar/calendar.component";
 
+import {IndividualCourseComponent} from "./components/individual-course/individual-course.component";
+
 import {Tester1Component} from "./components/tester1/tester1.component";
 
 const routes: Routes = [
@@ -43,17 +45,22 @@ const routes: Routes = [
   { path: 'adminmain', component: AdminmainComponent, canActivate: [AdminGuard]},
 
   // Student app routes
-  { path: '', redirectTo: '/main', pathMatch: 'full' },
+  // { path: '', redirectTo: '/main', pathMatch: 'full' },
   { path: 'main', component: MainComponent,  canActivate: [AuthGuard], children: [
       { path: 'calendar', component: CalendarComponent, outlet: 'content' },
       { path: 'today', component: DailyScheduleComponent, outlet: 'content' },
-      { path: 'this-week', component: WeeklyScheduleComponent, outlet: 'content' }
+      { path: 'this-week', component: WeeklyScheduleComponent, outlet: 'content' },
+
+      { path: 'course', component: IndividualCourseComponent, outlet: 'content'}
     ]
-  }
+  },
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes, {useHash: true, enableTracing: true}) ],
+  imports: [ RouterModule.forRoot(routes
+    // Uncomment this for testing purposes
+    ,{enableTracing: true}
+    ) ],
   exports: [ RouterModule ]
 })
 

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {CourseService} from "../../../services/course.service";
 
 @Component({
   selector: 'app-main',
@@ -7,9 +8,18 @@ import { Component } from '@angular/core';
 })
 export class MainComponent {
 
-  constructor() { }
+  courses: Array<any>;
+
+  constructor(private courseService: CourseService) {
+
+  }
 
   ngOnInit() {
+
+    var curr_user_id = sessionStorage.getItem('userid');
+
+    this.courseService.get_courses(curr_user_id).subscribe(res => {this.courses = res; console.log(this.courses)});
+
   }
 
 }
