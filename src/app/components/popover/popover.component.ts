@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { mobiscroll } from '@mobiscroll/angular';
-import {PopoverService} from "../../services/popover.service";
+import {PopoverService} from '../../services/popover.service';
 
 mobiscroll.settings = {
     theme: 'ios'

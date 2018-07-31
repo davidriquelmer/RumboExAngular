@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/logins/login/login.component';
@@ -41,6 +42,8 @@ import { WidgetComponent } from './components/widget/widget.component';
 import { IndividualCourseComponent } from './components/individual-course/individual-course.component';
 import { LoginmenuComponent } from './components/loginmenu/loginmenu.component';
 import {MaterialsModule} from './materials/materials.module';
+import {PopoverComponent} from './components/popover/popover.component';
+import {ModalComponent} from './components/modal/modal.component';
 
 // const appRoutes: Routes = [
 //   { path: 'schedule/calendar', component: CalendarComponent },
@@ -99,7 +102,9 @@ import {MaterialsModule} from './materials/materials.module';
     NewTaskFormComponent,
     WidgetComponent,
     IndividualCourseComponent,
-    LoginmenuComponent
+    LoginmenuComponent,
+    PopoverComponent,
+    ModalComponent
   ],
   imports: [
     MbscModule,
@@ -107,7 +112,8 @@ import {MaterialsModule} from './materials/materials.module';
     FormsModule,
     MaterialsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   // Each guard just check that the user have an specific characteristic to authorize the navegation. In this case it checks that the user
   // have the role to enter the respective pages. It is like and RBAC but for Angular.
