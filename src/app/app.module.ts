@@ -39,6 +39,8 @@ import { WeeklyScheduleComponent } from './components/weekly-schedule/weekly-sch
 import { NewTaskFormComponent } from './components/new-task-form/new-task-form.component';
 import { WidgetComponent } from './components/widget/widget.component';
 import { IndividualCourseComponent } from './components/individual-course/individual-course.component';
+import { LoginmenuComponent } from './components/loginmenu/loginmenu.component';
+import {MaterialsModule} from './materials/materials.module';
 
 // const appRoutes: Routes = [
 //   { path: 'schedule/calendar', component: CalendarComponent },
@@ -96,12 +98,14 @@ import { IndividualCourseComponent } from './components/individual-course/indivi
     WeeklyScheduleComponent,
     NewTaskFormComponent,
     WidgetComponent,
-    IndividualCourseComponent
+    IndividualCourseComponent,
+    LoginmenuComponent
   ],
-  imports: [ 
+  imports: [
     MbscModule,
     BrowserModule,
     FormsModule,
+    MaterialsModule,
     HttpClientModule,
     AppRoutingModule
   ],

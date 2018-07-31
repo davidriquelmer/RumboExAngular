@@ -10,7 +10,7 @@ import PopperJs from 'popper.js';
 import 'jqueryui';
 import 'fullcalendar';
 import 'fullcalendar-scheduler';
-import {now} from 'moment';
+import { now } from 'moment';
 import {TaskLogger} from 'protractor/built/taskLogger';
 import {p, renderComponent} from '@angular/core/src/render3';
 import Popper from 'popper.js';

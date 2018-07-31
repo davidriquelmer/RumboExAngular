@@ -1,34 +1,35 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from "@angular/router";
+import { RouterModule, Routes } from '@angular/router';
 
-import {LoginComponent} from "./components/logins/login/login.component";
-import {MentorloginComponent} from "./components/logins/mentorlogin/mentorlogin.component";
-import {AdminloginComponent} from "./components/logins/adminlogin/adminlogin.component";
-import {CounselorloginComponent} from "./components/logins/counselorlogin/counselorlogin.component";
-import {ProfessorloginComponent} from "./components/logins/professorlogin/professorlogin.component";
-import {AdvisorloginComponent} from "./components/logins/advisorlogin/advisorlogin.component";
-import {StudentloginComponent} from "./components/logins/studentlogin/studentlogin.component";
+import {LoginComponent} from './components/logins/login/login.component';
+import {MentorloginComponent} from './components/logins/mentorlogin/mentorlogin.component';
+import {AdminloginComponent} from './components/logins/adminlogin/adminlogin.component';
+import {CounselorloginComponent} from './components/logins/counselorlogin/counselorlogin.component';
+import {ProfessorloginComponent} from './components/logins/professorlogin/professorlogin.component';
+import {AdvisorloginComponent} from './components/logins/advisorlogin/advisorlogin.component';
+import {StudentloginComponent} from './components/logins/studentlogin/studentlogin.component';
 
-import {ScheduleComponent} from "./components/schedule/schedule.component";
-import {MainComponent} from "./components/mains/main/main.component";
-import {RegisterComponent} from "./components/register/register.component";
-import {AdminmainComponent} from "./components/mains/adminmain/adminmain.component";
-import {LogoutComponent} from "./components/logout/logout.component";
-import {AuthGuard} from "./guards/auth.guard";
-import {StatusComponent} from "./components/status/status.component";
-import {AdminGuard} from "./guards/admin.guard";
+import {ScheduleComponent} from './components/schedule/schedule.component';
+import {MainComponent} from './components/mains/main/main.component';
+import {RegisterComponent} from './components/register/register.component';
+import {AdminmainComponent} from './components/mains/adminmain/adminmain.component';
+import {LogoutComponent} from './components/logout/logout.component';
+import {AuthGuard} from './guards/auth.guard';
+import {StatusComponent} from './components/status/status.component';
+import {AdminGuard} from './guards/admin.guard';
 
-import {WeeklyScheduleComponent} from "./components/weekly-schedule/weekly-schedule.component";
-import {DailyScheduleComponent} from "./components/daily-schedule/daily-schedule.component";
-import {CalendarComponent} from "./components/calendar/calendar.component";
+import {WeeklyScheduleComponent} from './components/weekly-schedule/weekly-schedule.component';
+import {DailyScheduleComponent} from './components/daily-schedule/daily-schedule.component';
+import {CalendarComponent} from './components/calendar/calendar.component';
 
-import {IndividualCourseComponent} from "./components/individual-course/individual-course.component";
+import {IndividualCourseComponent} from './components/individual-course/individual-course.component';
+import {LoginmenuComponent} from './components/loginmenu/loginmenu.component';
 
-import {Tester1Component} from "./components/tester1/tester1.component";
 
 const routes: Routes = [
 
   // This part are the login's. They don't use guard. (The guard of the login is practically the code in flask.)
+  { path: 'loginmenu', component: LoginmenuComponent },
   { path: 'login', component: LoginComponent },
   { path: 'adminlogin', component: AdminloginComponent },
   { path: 'studentlogin', component: StudentloginComponent },
