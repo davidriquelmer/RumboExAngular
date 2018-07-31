@@ -1,0 +1,57 @@
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+  New Task
+</button>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="myModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Create New Task</h4>
+              <button type="button" onclick="hide()" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <form (onsubmit)="open()">
+              <div class="modal-body">
+                <div class="row">
+                  <div class="col-sm-12 ">
+                    <label class="col-sm-4">Type</label>
+                    <input type="radio" name="type" id="type1" value="Study"/>
+                    <label for="type1">Study</label>
+                    &nbsp;&nbsp;
+                    <input type="radio" name="type" id="type2" value="Personal"/>
+                    <label for="title">Personal</label>
+                  </div>
+                </div>
+                <div class="row ">
+                    <div class="col-sm-12">
+                        <label class="col-sm-4" for="title">Task title</label>
+                        <input type="text" name="title" id="title" [(ngModel)]="title"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <label class="col-sm-4" for="title">Description</label>
+                        <input type="text" name="description" id="description" placeholder="optional" [(ngModel)]="description"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <label class="col-sm-4" for="starts-at">Starts at</label>
+                        <input type="date" name="start_date" id="starts-at" [(ngModel)]="start"/>
+                        <input type="time" name="start_time" id="starts-at" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <label class="col-sm-4" for="ends-at">Ends at</label>
+                        <input type="date" name="end_date" id="ends-at" [(ngModel)]="end"/>
+                      <input type="time" name="end_time" id="ends-at" />
+                    </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                  <button type="submit" class="btn btn-primary">Create Task</button>
+              </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
