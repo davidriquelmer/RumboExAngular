@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { AppRoutingModule } from "./app-routing.module";
+import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/logins/login/login.component';
@@ -29,8 +29,6 @@ import { AdminmainComponent } from './components/mains/adminmain/adminmain.compo
 import {StudentService} from './services/student.service';
 import {ErroralertService} from './services/erroralert.service';
 import { ErroralertComponent } from './components/erroralert/erroralert.component';
-import { PopoverComponent } from './components/popover/popover.component';
-import { ModalComponent } from './components/modal/modal.component';
 import { SidebarComponent } from './components/sharedComponents/sidebar/sidebar.component';
 import { TopnavbarComponent } from './components/sharedComponents/topnavbar/topnavbar.component';
 import { BreadcrumbComponent } from './components/sharedComponents/breadcrumb/breadcrumb.component';
@@ -40,7 +38,6 @@ import { DailyScheduleComponent } from './components/daily-schedule/daily-schedu
 import { WeeklyScheduleComponent } from './components/weekly-schedule/weekly-schedule.component';
 import { NewTaskFormComponent } from './components/new-task-form/new-task-form.component';
 import { WidgetComponent } from './components/widget/widget.component';
-import { Tester1Component } from './components/tester1/tester1.component';
 import { IndividualCourseComponent } from './components/individual-course/individual-course.component';
 
 // const appRoutes: Routes = [
@@ -90,8 +87,6 @@ import { IndividualCourseComponent } from './components/individual-course/indivi
     CounselormainComponent,
     AdminmainComponent,
     ErroralertComponent,
-    PopoverComponent,
-    ModalComponent,
     SidebarComponent,
     TopnavbarComponent,
     BreadcrumbComponent,
@@ -101,10 +96,9 @@ import { IndividualCourseComponent } from './components/individual-course/indivi
     WeeklyScheduleComponent,
     NewTaskFormComponent,
     WidgetComponent,
-    Tester1Component,
     IndividualCourseComponent
   ],
-  imports: [
+  imports: [ 
     MbscModule,
     BrowserModule,
     FormsModule,

@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { Task } from "../../models/task";
-import { TaskService} from "../../services/task.service";
+import { Task } from '../../models/task';
+import { TaskService} from '../../services/task.service';
 import {PopoverService} from '../../services/popover.service';
-import {ModalService} from "../../services/modal.service";
-import {PopoverComponent} from "../popover/popover.component";
-import {AuthService} from "../../services/auth.service";
+import {ModalService} from '../../services/modal.service';
+import {PopoverComponent} from '../popover/popover.component';
+import {AuthService} from '../../services/auth.service';
 import * as $ from 'jquery';
 import PopperJs from 'popper.js';
 import 'jqueryui';
 import 'fullcalendar';
 import 'fullcalendar-scheduler';
-import {now} from "moment";
-import {TaskLogger} from "protractor/built/taskLogger";
-import {p, renderComponent} from "@angular/core/src/render3";
-import Popper from "popper.js";
-import {renderTemplate} from "@angular/core/src/render3/instructions";
+import {now} from 'moment';
+import {TaskLogger} from 'protractor/built/taskLogger';
+import {p, renderComponent} from '@angular/core/src/render3';
+import Popper from 'popper.js';
+import {renderTemplate} from '@angular/core/src/render3/instructions';
 
 
 @Component({
@@ -65,23 +65,23 @@ export class ScheduleComponent implements OnInit {
         defaultDate: now(),
         navLinks: true, // can click day/week names to navigate views
         editable: false, // cannot move an event to another date
-        eventLimit: true, // allow "more" link when too many events
+        eventLimit: true, // allow 'more' link when too many events
         eventSources: [
           {
             // events: this.tasks['personal'],
-            url: "http://localhost:5000/task/personal/" + curr_user_id,
-            color: "blue"
+            url: 'http://localhost:5000/task/personal/' + curr_user_id,
+            color: 'blue'
           },
           {
-            url: "http://localhost:5000/task/course/" + curr_user_id,
-            color: "red"
+            url: 'http://localhost:5000/task/course/' + curr_user_id,
+            color: 'red'
           },
           {
-            url: "http://localhost:5000/task/study/" + curr_user_id,
-            color: "green"
+            url: 'http://localhost:5000/task/study/' + curr_user_id,
+            color: 'green'
           }
         ],
-        eventTextColor:"white",
+        eventTextColor:'white',
 
         eventClick: function(event, jsEvent, view) {
           this.renderPopover(event, jsEvent, view);
