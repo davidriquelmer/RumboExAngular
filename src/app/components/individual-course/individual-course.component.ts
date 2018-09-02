@@ -8,10 +8,9 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class IndividualCourseComponent implements OnInit {
 
-  settings: any = {
-        theme: 'ios'
-  }
-
+  c_name = 'Data Bases';
+  c_codification = 'ICOM5009';
+  c_section = '116';
   sub;
   course;
 

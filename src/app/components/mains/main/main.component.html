@@ -17,20 +17,16 @@
                     <div *ngFor="let c of courses">
                       <li><a [routerLink]="[ '/main', { outlets: { content: 'course' } }]" [queryParams]="{ course: c }" >{{c.course_name}}</a></li>
                     </div>
-                      <!--<li><a href="layout-blank.html">Cálculo I</a></li>-->
-                      <!--<li><a href="layout-boxed.html">Física</a></li>-->
-                      <!--<li><a href="layout-fix-header.html">Ingles</a></li>-->
                   </ul>
               </li>
               <li class="nav-label">Schedule</li>
               <li> <a class="has-arrow  " href aria-expanded="false"><i class="fa fa-envelope"></i><span class="hide-menu">Schedule</span></a>
                   <ul aria-expanded="false" class="collapse">
                       <li><a [routerLink]="[ '/main', { outlets: { content: 'today' } }]">Today</a></li>
-                      <li><a [routerLink]="[ '/main', { outlets: { content: 'calendar' } }]">Tomorrow</a></li>
+                      <li><a [routerLink]="[ '/main', { outlets: { content: 'today' } }]">Tomorrow</a></li>
                       <li><a [routerLink]="[ '/main', { outlets: { content: 'this-week' } }]">This Week</a></li>
-                      <li><a [routerLink]="[ '/main', { outlets: { content: 'calendar' } }]">Next Week</a></li>
+                      <li><a [routerLink]="[ '/main', { outlets: { content: 'this-week' } }]">Next Week</a></li>
                       <li><a [routerLink]="[ '/main', { outlets: { content: 'calendar' } }]">Calendar</a></li>
-
                   </ul>
               </li>
           </ul>

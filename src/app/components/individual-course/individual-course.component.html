@@ -1,28 +1,41 @@
-<div >
-  <div >
-    <mbsc-card [options]="settings">
-        <mbsc-card-header>
-            <mbsc-card-title>{{course.name}}</mbsc-card-title>
-            <mbsc-card-subtitle>{{course.codification}} - {{course.section}}</mbsc-card-subtitle>
-        </mbsc-card-header>
-        <mbsc-card-footer>Progress Bar or something with numbers and colors</mbsc-card-footer>
-    </mbsc-card>
-  </div>
+<div class="row">
+  <div class="col-sm-6">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>{{c_name}}</mat-card-title>
+            <mat-card-subtitle>{{c_codification}} - {{c_section}}</mat-card-subtitle>
+        </mat-card-header>
+    </mat-card>
 
-  <div >
-    <mbsc-card [options]="settings">
-        <mbsc-card-content>
-            <mbsc-card-title>Grades</mbsc-card-title>
-        </mbsc-card-content>
-    </mbsc-card>
-  </div>
+    <mat-card>
+      <mat-card-title>Progress</mat-card-title>
+      <mat-card-content>
+        <mat-progress-bar mode="determinate" value="80"></mat-progress-bar>
+        <mat-chip class="offset-9">80 %</mat-chip>
+      </mat-card-content>
+    </mat-card>
 
-  <div >
-    <mbsc-card [options]="settings">
-        <mbsc-card-content>
+    <mat-card>
+        <mat-card-content>
+            <mat-card-title>Grades</mat-card-title>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+        <mat-card-content>
           <p>See tutors</p>
           <p>Send email to professor</p>
-        </mbsc-card-content>
-    </mbsc-card>
+        </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div class="col-sm-6">
+    <mat-card>
+      <mat-card-title>TO DO</mat-card-title>
+      <mat-list>
+        <mat-list-item><mat-checkbox>Study for quiz</mat-checkbox></mat-list-item>
+        <mat-list-item><mat-checkbox>Project phase 1</mat-checkbox></mat-list-item>
+      </mat-list>
+    </mat-card>
   </div>
 </div>

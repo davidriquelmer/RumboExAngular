@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { mobiscroll } from '@mobiscroll/angular';
+import {MbscEventcalendarOptions, mobiscroll} from '@mobiscroll/angular';
 import { TaskService } from "../../services/task.service";
+import {PopoverComponent} from "../popover/popover.component";
 
-mobiscroll.settings = {
-    theme: 'web'
-};
+// mobiscroll.settings = {
+//     theme: 'web'
+// };
 
 var now = new Date();
 
@@ -24,12 +25,20 @@ export class CalendarComponent {
 
   labelDays: Array<any> = [];
 
+  showModal: Boolean = false;
+
   constructor(private taskService: TaskService) {}
 
 
   ngOnInit() {
 
     this.loadTasks();
+    this.addPersonalTask();
+
+    $("button").click(function(){
+      this.showModal = true;
+      console.log(this.showModal);
+    })
 
   }
 
@@ -83,15 +92,28 @@ export class CalendarComponent {
     }
   }
 
-  // addPersonalTask() {
-  //   this.taskProvider.addPersonalTask(
-  //     'eat',
-  //     'because im hungry',
-  //     now,
-  //     now
-  //   );
-  // }
+  addPersonalTask() {
+    this.taskService.insert_personal_task(
+      this.current_user_id,
+      {
+        title: 'eat',
+        description: 'because im hungry',
+        start: now,
+        end: now,
+        finished: false
+      }
+    );
+  }
 
+  eventSettings: MbscEventcalendarOptions = {
+        theme: 'ios',
+        view: {
+          calendar: { type: 'month', popover: true }
+        },
+        // onEventSelect(event, cal): {
+        //   alert("Well this works");
+        // },
+    };
 
 }
 

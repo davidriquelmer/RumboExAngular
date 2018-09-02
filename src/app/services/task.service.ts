@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Task } from "../models/task";
 import {Observable} from "rxjs/internal/Observable";
 import {HttpResponse} from "selenium-webdriver/http";
+import {catchError} from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -32,9 +33,9 @@ export class TaskService {
     return this.http.get<Task[]>(url);
   }
 
-  insert_personal_task(user_id, data): Promise<any> {
+  insert_personal_task(user_id, task: Task): Observable<Task> {
     let url: string = `${this.BASE_URL}/personal/${user_id}`;
-    return this.http.post(url, data, {headers: this.httpheaders}).toPromise();
+    return this.http.post<Task>(url, JSON.stringify(task), {headers: this.httpheaders});
   }
 
   get_all() {

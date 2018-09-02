@@ -1,7 +1,13 @@
+<!--<button type="button" class="btn btn-outline-primary">-->
+  <!--New Task-->
+<!--</button>-->
+
+<!--<app-new-task-form *ngIf="true"></app-new-task-form>-->
+
 <mbsc-form>
     <div class="mbsc-form-group">
         <div class="mbsc-form-group-title"></div>
-        <mbsc-eventcalendar display="inline" [labels]="labelDays"></mbsc-eventcalendar>
+        <mbsc-eventcalendar display="inline" [labels]="labelDays" [options]="eventSettings"></mbsc-eventcalendar>
     </div>
 </mbsc-form>
 
