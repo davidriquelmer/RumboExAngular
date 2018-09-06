@@ -16,7 +16,12 @@ export class CourseService {
   constructor(private http: HttpClient) { }
 
   get_courses(user_id): Observable<any> {
-    let url: string = `${this.BASE_URL}/${user_id}`;
+    let url: string = `${this.BASE_URL}s/${user_id}`;
+    return this.http.get(url);
+  }
+
+  get_course(course_id): Observable<any> {
+    let url: string = `${this.BASE_URL}/${course_id}`;
     return this.http.get(url);
   }
 
