@@ -1,8 +1,8 @@
 <div class="row">
   <div class="col-sm-6">
     <mat-card>
-      <mat-card-title>{{c_name}}</mat-card-title>
-      <mat-card-subtitle>{{c_codification}} - {{c_section}}</mat-card-subtitle>
+      <mat-card-title>{{course.course_name}}</mat-card-title>
+      <mat-card-subtitle>{{course.codification}} - {{course.section}}</mat-card-subtitle>
     </mat-card>
 
     <mat-card>
@@ -32,11 +32,21 @@
 
   <div class="col-sm-6">
     <mat-card>
-      <mat-card-title>TO DO</mat-card-title>
-      <mat-list>
-        <mat-list-item><mat-checkbox>Study for quiz</mat-checkbox></mat-list-item>
-        <mat-list-item><mat-checkbox>Project phase 1</mat-checkbox></mat-list-item>
-      </mat-list>
+      <!--<mat-grid-list cols="2" rowHeight="fit">-->
+        <!--<mat-grid-tile>-->
+          <mat-card-title>TO DO</mat-card-title>
+          <mat-list *ngFor="let t of undoneTasks">
+            <mat-list-item><mat-checkbox>{{t.title}}</mat-checkbox></mat-list-item>
+          </mat-list>
+        <!--</mat-grid-tile>-->
+        <mat-divider [vertical]="true"></mat-divider>
+        <!--<mat-grid-tile>-->
+          DONE
+          <mat-list *ngFor="let t of doneTasks">
+            <mat-list-item><mat-checkbox [checked]="true" [color]="grey" >{{t.title}}</mat-checkbox></mat-list-item>
+          </mat-list>
+        <!--</mat-grid-tile>-->
+      <!--</mat-grid-list>-->
     </mat-card>
   </div>
 </div>

@@ -109,10 +109,7 @@ export class CalendarComponent {
         theme: 'ios',
         view: {
           calendar: { type: 'month', popover: true }
-        },
-        // onEventSelect(event, cal): {
-        //   alert("Well this works");
-        // },
+        }
     };
 
 }
