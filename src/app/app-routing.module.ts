@@ -23,6 +23,7 @@ import {DailyScheduleComponent} from './components/daily-schedule/daily-schedule
 import {CalendarComponent} from './components/calendar/calendar.component';
 
 import {IndividualCourseComponent} from './components/individual-course/individual-course.component';
+import {DashboardComponent} from './components/dashboard/dashboard.component';
 import {LoginmenuComponent} from './components/loginmenu/loginmenu.component';
 
 
@@ -52,7 +53,8 @@ const routes: Routes = [
       { path: 'today', component: DailyScheduleComponent, outlet: 'content' },
       { path: 'this-week', component: WeeklyScheduleComponent, outlet: 'content' },
 
-      { path: 'course', component: IndividualCourseComponent, outlet: 'content'}
+      { path: 'course', component: IndividualCourseComponent, outlet: 'content'},
+      { path: 'dashboard', component: DashboardComponent, outlet: 'content'}
     ]
   },
 ];

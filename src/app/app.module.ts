@@ -11,6 +11,12 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatListModule} from '@angular/material/list';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatTableModule} from '@angular/material/table';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/logins/login/login.component';
@@ -39,7 +45,6 @@ import { ErroralertComponent } from './components/erroralert/erroralert.componen
 import { SidebarComponent } from './components/sharedComponents/sidebar/sidebar.component';
 import { TopnavbarComponent } from './components/sharedComponents/topnavbar/topnavbar.component';
 import { BreadcrumbComponent } from './components/sharedComponents/breadcrumb/breadcrumb.component';
-import { DashboardComponent } from './components/sharedComponents/dashboard/dashboard.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { DailyScheduleComponent } from './components/daily-schedule/daily-schedule.component';
 import { WeeklyScheduleComponent } from './components/weekly-schedule/weekly-schedule.component';
@@ -47,38 +52,11 @@ import { NewTaskFormComponent } from './components/new-task-form/new-task-form.c
 import { WidgetComponent } from './components/widget/widget.component';
 import { IndividualCourseComponent } from './components/individual-course/individual-course.component';
 import { LoginmenuComponent } from './components/loginmenu/loginmenu.component';
+import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import {MaterialsModule} from './materials/materials.module';
 import {PopoverComponent} from './components/popover/popover.component';
 import {ModalComponent} from './components/modal/modal.component';
 
-// const appRoutes: Routes = [
-//   { path: 'schedule/calendar', component: CalendarComponent },
-//   { path: 'schedule/today', component: DailyScheduleComponent },
-//   { path: 'schedule/this-week', component: WeeklyScheduleComponent }
-// ];
-//
-// const loginRoutes: Routes = [
-//   // This part are the login's. They don't use guard. (The guard of the login is practically the code in flask.)
-//   { path: 'login', component: LoginComponent },
-//   { path: 'adminlogin', component: AdminloginComponent },
-//   { path: 'studentlogin', component: StudentloginComponent },
-//   { path: 'counselorlogin', component: CounselorloginComponent },
-//   { path: 'mentorlogin', component: MentorloginComponent },
-//   { path: 'professorlogin', component: ProfessorloginComponent },
-//   { path: 'advisorlogin', component: AdvisorloginComponent }
-// ];
-//
-// const otherRoutes: Routes = [
-//   // This things haves to be guarded and classified
-//   { path: 'logout', component: LogoutComponent, canActivate: [AuthGuard] },
-//   { path: 'register', component: RegisterComponent, canActivate: [AdminGuard]},
-//   { path: 'status', component: StatusComponent},
-//   { path: 'schedule', component: ScheduleComponent, canActivate: [AuthGuard] },
-//   { path: 'main', component: MainComponent,  canActivate: [AuthGuard]},
-//   { path: 'adminmain', component: AdminmainComponent, canActivate: [AdminGuard]}
-// ];
-//
-// const routes = Array.prototype.concat(appRoutes, loginRoutes, otherRoutes);
 
 @NgModule({
   declarations: [
@@ -112,8 +90,8 @@ import {ModalComponent} from './components/modal/modal.component';
     PopoverComponent,
     ModalComponent
   ],
-  imports: [
-    MbscModule,
+  imports: [ 
+    MbscModule, 
     BrowserModule,
     FormsModule,
     MaterialsModule,
@@ -124,7 +102,13 @@ import {ModalComponent} from './components/modal/modal.component';
     MatCheckboxModule,
     MatListModule,
     MatProgressBarModule,
-    MatChipsModule
+    MatChipsModule,
+    MatGridListModule,
+    MatTableModule,
+    MatExpansionModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatDialogModule
   ],
   // Each guard just check that the user have an specific characteristic to authorize the navegation. In this case it checks that the user
   // have the role to enter the respective pages. It is like and RBAC but for Angular.

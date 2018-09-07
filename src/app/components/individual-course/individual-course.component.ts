@@ -16,10 +16,11 @@ export class IndividualCourseComponent implements OnInit {
 
   course;
 
-  studyTasks = [];
-
   undoneTasks = [];
   doneTasks = [];
+
+  grades: Array<any>;
+  progress;
 
   sub;
 
@@ -52,20 +53,17 @@ export class IndividualCourseComponent implements OnInit {
       console.log('tasks:', this.undoneTasks, this.doneTasks);
     });
 
-    for(let i=0; i < this.studyTasks.length; i++) {
-      if(this.studyTasks[i]['finished'] == true) {
-        this.doneTasks.push(this.studyTasks[i]);
-      }
-      else {
-        this.undoneTasks.push(this.studyTasks[i]);
-      }
-      console.log('wtf', this.doneTasks, this.undoneTasks);
-    }
-
+    this.get_total_grade();
   }
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+  }
+
+  get_total_grade() {
+    for(let i = 0; i < this.grades.length; i++) {
+      this.progress += this.grades[i]['grade'] * this.grades[i]['weight'] / 100;
+    }
   }
 
 }

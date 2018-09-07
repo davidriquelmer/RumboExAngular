@@ -9,7 +9,8 @@
           <ul id="sidebarnav">
               <li class="nav-devider"></li>
               <li class="nav-label">Home</li>
-              <li class="nav-item"> <a class="has-arrow  " routerLink="/dashboard" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Dashboard</span></a>
+              <li class="nav-item"> <a class="has-arrow  " [routerLink]="[ '/main', { outlets: { content: 'dashboard' } }]"
+                                       aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Dashboard</span></a>
               </li>
               <li class="nav-label">Courses</li>
               <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-columns"></i><span class="hide-menu">Courses</span></a>
