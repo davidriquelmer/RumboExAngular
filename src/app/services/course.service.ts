@@ -25,4 +25,9 @@ export class CourseService {
     return this.http.get(url);
   }
 
+  get_grades_by_course_id(course_id): Observable<any> {
+    let url: string = `${this.BASE_URL}/${course_id}/grades`;
+    return this.http.get(url);
+  }
+
 }

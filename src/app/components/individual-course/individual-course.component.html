@@ -8,8 +8,8 @@
     <mat-card>
       <mat-card-title>Progress</mat-card-title>
       <mat-card-content>
-        <mat-progress-bar mode="determinate" value="progress"></mat-progress-bar>
-        <mat-chip class="offset-9">80 %</mat-chip>
+        <mat-progress-bar mode="determinate" value="{{progress}}"></mat-progress-bar>
+        <mat-chip class="offset-9">{{progress}} %</mat-chip>
       </mat-card-content>
     </mat-card>
 
@@ -30,24 +30,13 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-              <th scope="row">Examen 1</th>
+            <tr *ngFor="let g of grades">
+              <th scope="row">{{g.evaluation}}</th>
               <td>Sep. 2</td>
-              <td>20 %</td>
-              <td>85</td>
+              <td>{{g.weight}} %</td>
+              <td>{{g.grade}}/{{g.total}}</td>
             </tr>
-            <tr>
-              <th scope="row">Quiz sorpresa</th>
-              <td>Ago. 8</td>
-              <td>5 %</td>
-              <td>5</td>
-            </tr>
-            <tr>
-              <th scope="row">Happy Hour</th>
-              <td>Oct. 8</td>
-              <td>25 %</td>
-              <td>100</td>
-            </tr>
+
             <!--<mat-expansion-panel>-->
               <!--<mat-expansion-panel-header></mat-expansion-panel-header>-->
             <!--<tr>-->

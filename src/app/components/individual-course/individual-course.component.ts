@@ -40,6 +40,12 @@ export class IndividualCourseComponent implements OnInit {
       console.log('course:', this.course);
     });
 
+    this.courseService.get_grades_by_course_id(this.curr_course_id).subscribe(data => {
+      this.grades = data;
+      console.log('grades:', this.grades);
+      this.get_total_grade();
+    });
+
     this.taskService.get_study_tasks_by_course(this.curr_student_id, this.curr_course_id).subscribe(data => {
       data.map(task => {
           if (task['finished'] == false) {
@@ -52,8 +58,6 @@ export class IndividualCourseComponent implements OnInit {
       )
       console.log('tasks:', this.undoneTasks, this.doneTasks);
     });
-
-    this.get_total_grade();
   }
 
   ngOnDestroy() {
@@ -61,9 +65,12 @@ export class IndividualCourseComponent implements OnInit {
   }
 
   get_total_grade() {
+    this.progress = 0;
     for(let i = 0; i < this.grades.length; i++) {
-      this.progress += this.grades[i]['grade'] * this.grades[i]['weight'] / 100;
+      let g = this.grades[i];
+      this.progress += g['grade'] / g['total'] * g['weight'];
     }
+    console.log('progress:', this.progress);
   }
 
 }
