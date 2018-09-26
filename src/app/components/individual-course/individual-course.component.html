@@ -37,18 +37,27 @@
               <td>{{g.grade}}/{{g.total}}</td>
             </tr>
 
-            <!--<mat-expansion-panel>-->
-              <!--<mat-expansion-panel-header></mat-expansion-panel-header>-->
-            <!--<tr>-->
-              <!--<th scope="row"><mat-form-field><input matInput placeholder="Name"></mat-form-field></th>-->
-              <!--<td><mat-form-field>-->
-                <!--<input matInput [matDatepicker]="picker" placeholder="Date">-->
-                <!--<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
-                <!--<mat-datepicker #picker></mat-datepicker></mat-form-field></td>-->
-              <!--<td><mat-form-field><input matInput placeholder="Weight"></mat-form-field></td>-->
-              <!--<td><mat-form-field><input matInput placeholder="Grade"></mat-form-field></td>-->
-            <!--</tr>-->
-            <!--</mat-expansion-panel>-->
+            <tr>
+              <th scope="row"><mat-form-field><input matInput placeholder="New Grade Name"></mat-form-field></th>
+              <td><mat-form-field>
+                <input matInput [matDatepicker]="picker" placeholder="Date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field></td>
+              <td><mat-form-field><input matInput placeholder="Weight"></mat-form-field></td>
+              <td>
+                <!--<div [formGroup]="parts">-->
+                  <!--<input class="area" formControlName="area" size="3">-->
+                  <!--<span>&ndash;</span>-->
+                  <!--<input class="exchange" formControlName="exchange" size="3">-->
+                  <!--<span>&ndash;</span>-->
+                  <!--<input class="subscriber" formControlName="subscriber" size="4">-->
+                <!--</div>-->
+
+
+                <mat-form-field><input matInput placeholder="Grade"></mat-form-field></td>
+            </tr>
+
             </tbody>
           </table>
         </div>
@@ -98,11 +107,12 @@
           <mat-list *ngFor="let t of undoneTasks">
             <mat-list-item><mat-checkbox>{{t.title}}</mat-checkbox></mat-list-item>
           </mat-list>
+          <button mat-mini-fab (click)="openForm()">+</button>
         </div>
         <mat-divider [vertical]="true"></mat-divider>
         <div class="col-sm-5">DONE
           <mat-list *ngFor="let t of doneTasks">
-            <mat-list-item><mat-checkbox [checked]="true" [color]="grey" >{{t.title}}</mat-checkbox></mat-list-item>
+            <mat-list-item><mat-checkbox [checked]="true" [color]="" >{{t.title}}</mat-checkbox></mat-list-item>
           </mat-list>
         </div>
       </div>

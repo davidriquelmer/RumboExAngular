@@ -10,7 +10,7 @@ mobiscroll.settings = {
 
 @Component({
   selector: 'app-new-task-form',
-  templateUrl: './new-task-form.component.html',
+  templateUrl: '../individual-course/new-course-task-form.component.html',
   styleUrls: ['./new-task-form.component.css']
 })
 export class NewTaskFormComponent {

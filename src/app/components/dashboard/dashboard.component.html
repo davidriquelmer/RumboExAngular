@@ -45,7 +45,7 @@
         <tbody>
         <!--<div *ngFor="let c of courses">-->
           <tr *ngFor="let c of courses">
-            <th scope="row"><a [routerLink]="[ '/main', { outlets: { content: 'course' } }]" [queryParams]="{ course: c.codification }" >{{c.course_name}}</a></th>
+            <th scope="row"><a [routerLink]="[ '/main', { outlets: { content: 'course' } }]" [queryParams]="{ course: c.codification }" >{{c.name}}</a></th>
             <td>{{c.grade}}</td>
             <td><span *ngIf="c.status=='PASSING'" class="badge badge-success">PASSING</span>
                 <span *ngIf="c.status=='NOT PASSING'" class="badge badge-danger">NOT PASSING</span>
