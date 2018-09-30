@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {TaskService} from "../../services/task.service";
 import {CourseService} from "../../services/course.service";
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from "@angular/material";
 
 @Component({
   selector: 'app-individual-course',
@@ -26,7 +27,8 @@ export class IndividualCourseComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private taskService: TaskService,
-              private courseService: CourseService) { }
+              private courseService: CourseService,
+              public dialog: MatDialog) { }
 
   ngOnInit() {
     this.sub = this.route
@@ -55,7 +57,7 @@ export class IndividualCourseComponent implements OnInit {
             this.doneTasks.push(task);
           }
         }
-      )
+      );
       console.log('tasks:', this.undoneTasks, this.doneTasks);
     });
   }
@@ -72,5 +74,28 @@ export class IndividualCourseComponent implements OnInit {
     }
     console.log('progress:', this.progress);
   }
+
+  openForm() {
+    console.log('opened');
+    // var pos: DialogPosition;
+    const dialogRef = this.dialog.open(NewCourseTaskForm,{
+      data: {course: this.course.course_name}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+    })
+  }
+
+}
+
+@Component({
+  selector: 'new-course-task-form',
+  templateUrl: 'new-course-task-form.component.html'
+})
+export class NewCourseTaskForm {
+
+  constructor(public dialogRef: MatDialogRef<NewCourseTaskForm>,
+              @Inject(MAT_DIALOG_DATA) public data){}
 
 }

@@ -17,6 +17,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
+// import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/logins/login/login.component';
@@ -49,6 +51,7 @@ import { CalendarComponent } from './components/calendar/calendar.component';
 import { DailyScheduleComponent } from './components/daily-schedule/daily-schedule.component';
 import { WeeklyScheduleComponent } from './components/weekly-schedule/weekly-schedule.component';
 import { NewTaskFormComponent } from './components/new-task-form/new-task-form.component';
+import { NewCourseTaskForm } from './components/individual-course/individual-course.component';
 import { WidgetComponent } from './components/widget/widget.component';
 import { IndividualCourseComponent } from './components/individual-course/individual-course.component';
 import { LoginmenuComponent } from './components/loginmenu/loginmenu.component';
@@ -83,9 +86,10 @@ import {ModalComponent} from './components/modal/modal.component';
     CalendarComponent,
     DailyScheduleComponent,
     WeeklyScheduleComponent,
-    NewTaskFormComponent,
     WidgetComponent,
     IndividualCourseComponent,
+    NewTaskFormComponent,
+    NewCourseTaskForm,
     LoginmenuComponent,
     PopoverComponent,
     ModalComponent
@@ -108,8 +112,12 @@ import {ModalComponent} from './components/modal/modal.component';
     MatExpansionModule,
     MatFormFieldModule,
     MatDatepickerModule,
-    MatDialogModule
+    MatDialogModule,
+    MatButtonModule,
+    // MatDialog,
+    // MatDialogRef
   ],
+  entryComponents: [NewCourseTaskForm],
   // Each guard just check that the user have an specific characteristic to authorize the navegation. In this case it checks that the user
   // have the role to enter the respective pages. It is like and RBAC but for Angular.
   providers: [AuthService, TaskService, AuthGuard, AdminGuard, StudentGuard, StudentService, ErroralertService],
