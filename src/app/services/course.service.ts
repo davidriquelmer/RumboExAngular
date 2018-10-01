@@ -2,7 +2,7 @@ import {Inject, Injectable} from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Task } from "../models/task";
 import {Observable} from "rxjs/internal/Observable";
-import {HttpResponse} from "selenium-webdriver/http";
+import {HttpResponse} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'

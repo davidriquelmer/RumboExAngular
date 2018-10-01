@@ -4,7 +4,8 @@ export class Task {
     description?: string,
     start?: number,
     end?: number,
-    finished?: boolean
+    finished?: boolean,
+    // user_id?: number
   )
   {
 

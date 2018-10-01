@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
+import {Task} from "../../models/task";
 import {TaskService} from "../../services/task.service";
 import {CourseService} from "../../services/course.service";
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from "@angular/material";
@@ -77,14 +78,24 @@ export class IndividualCourseComponent implements OnInit {
 
   openForm() {
     console.log('opened');
-    // var pos: DialogPosition;
     const dialogRef = this.dialog.open(NewCourseTaskForm,{
       data: {course: this.course.course_name}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
-    })
+      this.createTask(result);
+    });
+  }
+
+  createTask(data) {
+    console.log('data:', data);
+    var title = data['title'];
+    var description = data['description'];
+    var start = data['start'];
+    var end = data['end'];
+    var task = new Task(title, description, start, end, false);
+    this.taskService.insert_study_task(task, this.curr_student_id, this.curr_course_id);
   }
 
 }
@@ -96,6 +107,7 @@ export class IndividualCourseComponent implements OnInit {
 export class NewCourseTaskForm {
 
   constructor(public dialogRef: MatDialogRef<NewCourseTaskForm>,
+              private taskService: TaskService,
               @Inject(MAT_DIALOG_DATA) public data){}
 
 }

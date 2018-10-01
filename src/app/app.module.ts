@@ -18,7 +18,10 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
+import {MatTooltipModule} from '@angular/material/tooltip';
 // import {MatDialog, MatDialogRef} from "@angular/material/dialog";
+
+// import {GoogleChartsModule} from 'angular-google-charts';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/logins/login/login.component';
@@ -59,6 +62,8 @@ import { DashboardComponent } from "./components/dashboard/dashboard.component";
 import {MaterialsModule} from './materials/materials.module';
 import {PopoverComponent} from './components/popover/popover.component';
 import {ModalComponent} from './components/modal/modal.component';
+import {CourseService} from "./services/course.service";
+import {GooglechartService} from "./services/googlechart.service";
 
 
 @NgModule({
@@ -114,13 +119,15 @@ import {ModalComponent} from './components/modal/modal.component';
     MatDatepickerModule,
     MatDialogModule,
     MatButtonModule,
+    MatTooltipModule,
     // MatDialog,
     // MatDialogRef
+    // GoogleChartsModule
   ],
   entryComponents: [NewCourseTaskForm],
   // Each guard just check that the user have an specific characteristic to authorize the navegation. In this case it checks that the user
   // have the role to enter the respective pages. It is like and RBAC but for Angular.
-  providers: [AuthService, TaskService, AuthGuard, AdminGuard, StudentGuard, StudentService, ErroralertService],
+  providers: [AuthService, TaskService, AuthGuard, AdminGuard, StudentGuard, StudentService, ErroralertService, CourseService, GooglechartService],
   bootstrap: [AppComponent]
 })
 

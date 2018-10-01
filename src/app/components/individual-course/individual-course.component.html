@@ -1,3 +1,10 @@
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load('current', {packages: ['gauge']});
+  google.charts.setOnLoadCallback(drawChart);
+</script>
+
+
 <div class="row">
   <div class="col-sm-6">
     <mat-card>
@@ -103,16 +110,16 @@
   <div class="col-sm-6">
     <mat-card>
       <div class="row">
-        <div class="col-sm-6">TO DO
+        <div class="col-sm-6" matTooltip="esto es una prueba">TO DO
           <mat-list *ngFor="let t of undoneTasks">
-            <mat-list-item><mat-checkbox>{{t.title}}</mat-checkbox></mat-list-item>
+            <mat-list-item><mat-checkbox matTooltip="{{t.description}}">{{t.title}}</mat-checkbox></mat-list-item>
           </mat-list>
           <button mat-mini-fab (click)="openForm()">+</button>
         </div>
         <mat-divider [vertical]="true"></mat-divider>
         <div class="col-sm-5">DONE
           <mat-list *ngFor="let t of doneTasks">
-            <mat-list-item><mat-checkbox [checked]="true" [color]="" >{{t.title}}</mat-checkbox></mat-list-item>
+            <mat-list-item><mat-checkbox [checked]="true" [color]="" matTooltip="{{t.description}}">{{t.title}}</mat-checkbox></mat-list-item>
           </mat-list>
         </div>
       </div>

@@ -2,7 +2,7 @@ import {Inject, Injectable} from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Task } from "../models/task";
 import {Observable} from "rxjs/internal/Observable";
-import {HttpResponse} from "selenium-webdriver/http";
+import {HttpResponse} from "@angular/common/http";
 import {catchError} from "rxjs/operators";
 
 @Injectable({
@@ -36,6 +36,13 @@ export class TaskService {
   get_study_tasks_by_course(user_id, course_id): Observable<Task[]> {
     let url: string = `${this.BASE_URL}/study/${user_id}/${course_id}`;
     return this.http.get<Task[]>(url);
+  }
+
+  insert_study_task(task: Task, user_id, course_id): any {
+    let url: string = `${this.BASE_URL}/study/${user_id}`;
+    console.log(url);
+    // this post is not working
+    return this.http.post(url, JSON.stringify(task), {headers: this.httpheaders});
   }
 
   insert_personal_task(user_id, task: Task): Observable<Task> {
