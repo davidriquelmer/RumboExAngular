@@ -9,8 +9,6 @@ import {config} from "rxjs";
   styleUrls: ['./dashboard.component.css']
 })
 
-// declare var google: any;
-
 export class DashboardComponent implements OnInit {
 
   curr_student_id = sessionStorage.getItem('userid');
@@ -21,8 +19,6 @@ export class DashboardComponent implements OnInit {
 
   constructor(private courseService: CourseService,
               private chartService: GooglechartService) {
-    // this.google.charts.load('current', {'packages':['corechart']});
-    // this.google.charts.setOnLoadCallback(this.drawChart);
   }
 
   ngOnInit() {
@@ -37,37 +33,21 @@ export class DashboardComponent implements OnInit {
       console.log('course:', this.courses);
     });
 
-    // let data1 = [['Task', 'Hours per Day'],
-    //   ['Eat',      3],
-    //   ['Commute',  2],
-    //   ['Watch TV', 5],
-    //   ['Video games', 4],
-    //   ['Sleep',    10]];
-    //
-    // let config1 = {'title': 'My Daily Activities at 20 years old', 'pieHole': 0.4};
-    // let elementId1 = 'donutchart';
-    // this.chartService.buildPieChart(elementId1, data1, config1);
+    let data1 = [
+      ['Task', 'Hours per Day'],
+      ['Personal',      3],
+      ['Data Bases',  2],
+      ['Big Data', 5],
+      ['Course', 4],
+      ['Sleep',    10]
+    ];
+
+    let config1 = {'pieHole': 0.4};
+    let elementId1 = 'donutchart';
+    this.chartService.buildPieChart(elementId1, data1, config1);
   }
 
-  // drawChart() {
-  //
-  //   let data = this.google.visualization.arrayToDataTable([
-  //     ['Effort', 'Amount given'],
-  //     ['My all',     100],
-  //   ]);
-  //
-  //   let options = {
-  //     pieHole: 0.5,
-  //     pieSliceTextStyle: {
-  //       color: 'black',
-  //     },
-  //     legend: 'none'
-  //   };
-  //
-  //   let chart = new this.google.visualization.PieChart(document.getElementById('donut_single'));
-  //   chart.draw(data, options);
-  // }
-
+  // get the current grade of a course
   getGrade(course_id) {
     // let grades: Array<any>;
     // this.courseService.get_grades_by_course_id(course_id).subscribe(data => {
@@ -84,6 +64,8 @@ export class DashboardComponent implements OnInit {
     return 0;
   }
 
+  // get the status of a course by grade
+  // the grade range should be determined later by counselors (we need to ask this)
   getStatus(grade) {
     if(grade > 85) {
       return 'PASSING';
