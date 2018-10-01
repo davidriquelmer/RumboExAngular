@@ -44,23 +44,17 @@ export class CalendarComponent {
 
   loadTasks() {
 
-    this.taskService.get_study_tasks(this.current_user_id).subscribe(data => {
-      this.studyTasks = data;
-      this.mapStudyTaskToCalendar();
-      console.log('study tasks:', this.studyTasks)
-    });
+    this.studyTasks = this.taskService.get_study_tasks(this.current_user_id);
+    this.mapStudyTaskToCalendar();
+    console.log('study tasks:', this.studyTasks);
 
-    this.taskService.get_personal_tasks(this.current_user_id).subscribe(data => {
-      this.personalTasks = data;
-      this.mapPersonalTaskToCalendar();
-      console.log('personal tasks:', this.personalTasks)
-    });
+    this.personalTasks = this.taskService.get_personal_tasks(this.current_user_id);
+    this.mapPersonalTaskToCalendar();
+    console.log('personal tasks:', this.personalTasks);
 
-    this.taskService.get_course_tasks(this.current_user_id).subscribe(data => {
-      this.courseTasks = data;
-      this.mapCourseTaskToCalendar();
-      console.log('course tasks:', this.courseTasks)
-    });
+    this.courseTasks = this.taskService.get_course_tasks(this.current_user_id);
+    this.mapCourseTaskToCalendar();
+    console.log('course tasks:', this.courseTasks);
 
   }
 

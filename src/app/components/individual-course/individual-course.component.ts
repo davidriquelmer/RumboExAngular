@@ -3,6 +3,7 @@ import {ActivatedRoute} from "@angular/router";
 import {Task} from "../../models/task";
 import {TaskService} from "../../services/task.service";
 import {CourseService} from "../../services/course.service";
+import {GooglechartService} from "../../services/googlechart.service";
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from "@angular/material";
 
 @Component({
@@ -29,6 +30,7 @@ export class IndividualCourseComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private taskService: TaskService,
               private courseService: CourseService,
+              private chartService: GooglechartService,
               public dialog: MatDialog) { }
 
   ngOnInit() {
@@ -61,6 +63,17 @@ export class IndividualCourseComponent implements OnInit {
       );
       console.log('tasks:', this.undoneTasks, this.doneTasks);
     });
+
+    let data = [
+      ['Label', 'Value'],
+      ['', this.progress]
+    ];
+    let options = {
+      redFrom: 0, redTo: 50,
+      yellowFrom:50, yellowTo: 70,
+      minorTicks: 5
+    };
+    this.chartService.buildGauge('gauge', data, options);
   }
 
   ngOnDestroy() {

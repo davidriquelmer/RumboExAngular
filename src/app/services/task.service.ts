@@ -18,19 +18,38 @@ export class TaskService {
 
   task: Task;
 
-  get_personal_tasks(user_id): Observable<Task[]> {
-    let url: string = `${this.BASE_URL}/personal/${user_id}`;
-    return this.http.get<Task[]>(url);
+  personal_tasks: Task[];
+  course_tasks: Task[];
+  study_tasks: Task[];
+
+  get_personal_tasks(user_id): Task[] {
+    if (this.personal_tasks ==  null) {
+      let url: string = `${this.BASE_URL}/personal/${user_id}`;
+      this.http.get<Task[]>(url).subscribe(data => {
+        this.personal_tasks = data;
+      });
+    }
+    return this.personal_tasks;
   }
 
-  get_course_tasks(user_id): Observable<Task[]> {
-    let url: string = `${this.BASE_URL}/course/${user_id}`;
-    return this.http.get<Task[]>(url);
+  get_course_tasks(user_id): Task[] {
+    if (this.course_tasks == null) {
+      let url: string = `${this.BASE_URL}/course/${user_id}`;
+      this.http.get<Task[]>(url).subscribe(data => {
+        this.course_tasks = data;
+      });
+    }
+    return this.course_tasks;
   }
 
-  get_study_tasks(user_id): Observable<Task[]> {
-    let url: string = `${this.BASE_URL}/study/${user_id}`;
-    return this.http.get<Task[]>(url);
+  get_study_tasks(user_id): Task[] {
+    if (this.study_tasks == null) {
+      let url: string = `${this.BASE_URL}/study/${user_id}`;
+      this.http.get<Task[]>(url).subscribe(data => {
+        this.study_tasks = data;
+      });
+    }
+    return this.study_tasks;
   }
 
   get_study_tasks_by_course(user_id, course_id): Observable<Task[]> {
