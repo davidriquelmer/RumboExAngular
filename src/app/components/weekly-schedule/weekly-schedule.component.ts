@@ -14,9 +14,9 @@ export class WeeklyScheduleComponent implements OnInit {
 
   current_user_id = sessionStorage.getItem('userid');
 
-  studyTasks: Array<any> = [];
-  personalTasks: Array<any> = [];
-  courseTasks: Array<any> = [];
+  studyTasks: any = [];
+  personalTasks: any = [];
+  courseTasks: any = [];
 
   events: Array<any> = [];
 
@@ -30,17 +30,23 @@ export class WeeklyScheduleComponent implements OnInit {
 
   loadTasks() {
 
-    this.studyTasks = this.taskService.get_study_tasks(this.current_user_id);
-    this.mapStudyTaskToCalendar();
-    console.log('study tasks:', this.studyTasks);
+    this.taskService.get_study_tasks(this.current_user_id).subscribe(data => {
+      this.studyTasks = data;
+      this.mapStudyTaskToCalendar();
+      console.log('study tasks:', this.studyTasks)
+    });
 
-    this.personalTasks = this.taskService.get_personal_tasks(this.current_user_id);
-    this.mapPersonalTaskToCalendar();
-    console.log('personal tasks:', this.personalTasks);
+    this.taskService.get_personal_tasks(this.current_user_id).subscribe(data => {
+      this.personalTasks = data;
+      this.mapPersonalTaskToCalendar();
+      console.log('personal tasks:', this.personalTasks)
+    });
 
-    this.courseTasks = this.taskService.get_course_tasks(this.current_user_id);
-    this.mapCourseTaskToCalendar();
-    console.log('course tasks:', this.courseTasks);
+    this.taskService.get_course_tasks(this.current_user_id).subscribe(data => {
+      this.courseTasks = data;
+      this.mapCourseTaskToCalendar();
+      console.log('course tasks:', this.courseTasks)
+    });
 
   }
 
