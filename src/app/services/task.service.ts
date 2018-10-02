@@ -37,11 +37,13 @@ export class TaskService {
     return this.http.get<Task[]>(url);
   }
 
+  @Cacheable()
   get_study_tasks_by_course(user_id, course_id): Observable<Task[]> {
     let url: string = `${this.BASE_URL}/study/${user_id}/${course_id}`;
     return this.http.get<Task[]>(url);
   }
 
+  @Cacheable()
   insert_study_task(task: Task, user_id, course_id): any {
     let url: string = `${this.BASE_URL}/study/${user_id}`;
     console.log(url);
@@ -49,6 +51,7 @@ export class TaskService {
     return this.http.post(url, JSON.stringify(task), {headers: this.httpheaders});
   }
 
+  @Cacheable()
   insert_personal_task(user_id, task: Task): Observable<Task> {
     let url: string = `${this.BASE_URL}/personal/${user_id}`;
     return this.http.post<Task>(url, JSON.stringify(task), {headers: this.httpheaders});
