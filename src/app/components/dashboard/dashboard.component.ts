@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {CourseService} from "../../services/course.service";
-import {GooglechartService} from "../../services/googlechart.service";
-import {config} from "rxjs";
+import {CourseService} from '../../services/course.service';
+import {GooglechartService} from '../../services/googlechart.service';
+import {TaskCountService} from '../../services/task-count.service';
+import {config} from 'rxjs';
+import {nextMonthDisabled} from '@ng-bootstrap/ng-bootstrap/datepicker/datepicker-tools';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,12 +18,35 @@ export class DashboardComponent implements OnInit {
   courses = [];
 
   google: any;
+  personalTask = [];
+  courseTask = [];
+  appointmentTask = [];
+  studyTask = [];
 
   constructor(private courseService: CourseService,
-              private chartService: GooglechartService) {
+              private chartService: GooglechartService,
+              private taskCountService: TaskCountService) {
   }
-
+getChartValues() {
+       this.taskCountService.get_apppointment_tasks_count(this.curr_student_id).subscribe(data => {
+      this.appointmentTask = data;
+      console.log('count of appointment tasks:', this.appointmentTask[0][0]);
+    });
+    this.taskCountService.get_personal_tasks_count(this.curr_student_id).subscribe(data => {
+      this.personalTask = data;
+      console.log('count of personal tasks:', this.personalTask[0][0]);
+    });
+    this.taskCountService.get_study_tasks_count(this.curr_student_id).subscribe(data => {
+      this.studyTask = data;
+      console.log('count of study tasks:', this.studyTask[0][0]);
+      });
+    this.taskCountService.get_course_tasks_count(this.curr_student_id).subscribe( data => {
+      this.courseTask = data;
+      console.log('count of course tasks:', this.courseTask[0][0]);
+      });
+  }
   ngOnInit() {
+    this.getChartValues();
     this.courseService.get_courses(this.curr_student_id).subscribe(data => {
       data.map(course => {
         this.courses.push({
@@ -32,21 +57,19 @@ export class DashboardComponent implements OnInit {
       });
       console.log('course:', this.courses);
     });
-
     let data1 = [
       ['Task', 'Hours per Day'],
-      ['Personal',      3],
-      ['Data Bases',  2],
-      ['Big Data', 5],
-      ['Course', 4],
-      ['Sleep',    10]
+      ['Personal', this.personalTask[0][0]],
+      ['Courses' , this.courseTask[0][0]],
+      ['Appointments', this.appointmentTask[0][0]],
+      ['Study', this.studyTask[0][0]],
     ];
 
     let config1 = {'pieHole': 0.4};
     let elementId1 = 'donutchart';
     this.chartService.buildPieChart(elementId1, data1, config1);
-  }
 
+  }
   // get the current grade of a course
   getGrade(course_id) {
     // let grades: Array<any>;
@@ -67,10 +90,10 @@ export class DashboardComponent implements OnInit {
   // get the status of a course by grade
   // the grade range should be determined later by counselors (we need to ask this)
   getStatus(grade) {
-    if(grade > 85) {
+    if (grade > 85) {
       return 'PASSING';
     }
-    else if(grade > 70) {
+    else if (grade > 70) {
       return 'SURVIVING';
     }
     else {

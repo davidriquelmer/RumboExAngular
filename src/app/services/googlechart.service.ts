@@ -13,17 +13,17 @@ export class GooglechartService {
     google.charts.load('current', {'packages':['corechart']});
   }
 
-  public buildPieChart(elementId: string, data: any[], config: any) : void {
+  public buildPieChart(elementId: string, data: any[], config: any): void {
     let chartFunc = () => { return new google.visualization.PieChart(document.getElementById(elementId)); };
     this.buildChart(data, chartFunc, config);
   }
 
-  public buildGauge(elementId: string, data: any[], config: any) : void {
+  public buildGauge(elementId: string, data: any[], config: any): void {
     let chartFunc = () => { return new google.visualization.Gauge(document.getElementById(elementId)); };
     this.buildChart(data, chartFunc, config);
   }
 
-  protected buildChart(data: any[], chartFunc: any, options: any) : void {
+  protected buildChart(data: any[], chartFunc: any, options: any): void {
     let func = (chartFunc, options) => {
       let datatable = google.visualization.arrayToDataTable(data);
       chartFunc().draw(datatable, options);
