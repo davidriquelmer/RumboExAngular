@@ -70,7 +70,6 @@ export class CalendarComponent {
       text: task.title,
       color: '#00aabb',
       description: task.description
-      // console.log(typeof task.start);
     });
   }
 

@@ -10,7 +10,7 @@ declare var google: any;
 export class GooglechartService {
 
   constructor() {
-    google.charts.load('current', {'packages':['corechart']});
+    google.charts.load('current', {'packages':['corechart', 'gauge']});
   }
 
   public buildPieChart(elementId: string, data: any[], config: any) : void {

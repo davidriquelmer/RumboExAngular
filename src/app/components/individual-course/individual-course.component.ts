@@ -11,6 +11,8 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from "@angular/material";
   templateUrl: './individual-course.component.html',
   styleUrls: ['./individual-course.component.css']
 })
+// this whole code is so messy and ugly
+// i will find the time to clean it... i promise :)
 export class IndividualCourseComponent implements OnInit {
 
   curr_student_id: any = sessionStorage.getItem('userid');
@@ -49,6 +51,7 @@ export class IndividualCourseComponent implements OnInit {
       this.grades = data;
       console.log('grades:', this.grades);
       this.get_total_grade();
+      this.buildGauge();
     });
 
     this.taskService.get_study_tasks_by_course(this.curr_student_id, this.curr_course_id).subscribe(data => {
@@ -63,21 +66,28 @@ export class IndividualCourseComponent implements OnInit {
       );
       console.log('tasks:', this.undoneTasks, this.doneTasks);
     });
-
-    let data = [
-      ['Label', 'Value'],
-      ['', this.progress]
-    ];
-    let options = {
-      redFrom: 0, redTo: 50,
-      yellowFrom:50, yellowTo: 70,
-      minorTicks: 5
-    };
-    this.chartService.buildGauge('gauge', data, options);
   }
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+  }
+
+  buildGauge() {
+    let data = [
+      ['Label', 'Value'],
+      ['Current Grade', this.progress],
+      //this is hardcoded
+      ['Projected Grade', 80]
+    ];
+    let options = {
+      // width: 400, height: 120,
+      // animation.duration: 1000,
+      redFrom: 0, redTo: 50,
+      yellowFrom:50, yellowTo: 70,
+      majorTicks: ['10', '20', '30', '40', '50', '60', '70', '80', '90'],
+      minorTicks: 2
+    };
+    this.chartService.buildGauge('gauge', data, options);
   }
 
   get_total_grade() {

@@ -56,7 +56,6 @@ export class DailyScheduleComponent  implements OnInit {
       text: task.title,
       color: '#00aabb',
       description: task.description
-      // console.log(typeof task.start);
     });
   }
 
