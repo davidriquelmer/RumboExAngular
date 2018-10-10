@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Task} from "../models/task";
 
 @Injectable({
   providedIn: 'root'
@@ -61,5 +62,23 @@ export class AuthService {
    logout(): Promise<any> {
     let url: string = `${this.BASE_URL}/logout`;
     return this.http.post(url, null, {headers: this.httpheaders}).toPromise();
+  }
+
+
+  insert_study_task(task: Task, user_id, course_id): Promise<any> {
+    let url: string = `${this.BASE_URL}/study/${user_id}`;
+    console.log(url);
+    let new_task = {
+      'task_name': task['title'],
+      'task_description': task['description'],
+      'start_time': task['start'],
+      'end_time': task['end'],
+      'finished': false,
+      'course_id': course_id
+    };
+    console.log(new_task);
+    console.log('me voa cagar en la madre del diablo');
+    // this post is not working
+    return this.http.post(url, new_task, {headers: this.httpheaders}).toPromise();
   }
 }

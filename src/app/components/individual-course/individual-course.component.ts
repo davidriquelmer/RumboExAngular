@@ -6,6 +6,8 @@ import {CourseService} from "../../services/course.service";
 import {GooglechartService} from "../../services/googlechart.service";
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from "@angular/material";
 
+import {AuthService} from "../../services/auth.service";
+
 @Component({
   selector: 'app-individual-course',
   templateUrl: './individual-course.component.html',
@@ -33,7 +35,8 @@ export class IndividualCourseComponent implements OnInit {
               private taskService: TaskService,
               private courseService: CourseService,
               private chartService: GooglechartService,
-              public dialog: MatDialog) { }
+              public dialog: MatDialog,
+              private authService: AuthService) { }
 
   ngOnInit() {
     this.sub = this.route
@@ -83,7 +86,8 @@ export class IndividualCourseComponent implements OnInit {
       // width: 400, height: 120,
       // animation.duration: 1000,
       redFrom: 0, redTo: 50,
-      yellowFrom:50, yellowTo: 70,
+      yellowFrom: 50, yellowTo: 70,
+      greenFrom: 70, greenTo: 100,
       majorTicks: ['10', '20', '30', '40', '50', '60', '70', '80', '90'],
       minorTicks: 2
     };
@@ -119,7 +123,8 @@ export class IndividualCourseComponent implements OnInit {
     var end = data['end'];
     var task = new Task(title, description, start, end, false);
     console.log(task);
-    this.taskService.insert_study_task(data, this.curr_student_id, this.curr_course_id);
+    // this.taskService.insert_study_task(data, this.curr_student_id, this.curr_course_id);
+    this.authService.insert_study_task(data, this.curr_student_id, this.curr_course_id);
   }
 
 }

@@ -59,10 +59,15 @@ export class DashboardComponent implements OnInit {
     });
     let data1 = [
       ['Task', 'Hours per Day'],
-      ['Personal', this.personalTask[0][0]],
-      ['Courses' , this.courseTask[0][0]],
-      ['Appointments', this.appointmentTask[0][0]],
-      ['Study', this.studyTask[0][0]],
+      // fix this
+      // ['Personal', this.personalTask[0][0]],
+      // ['Courses' , this.courseTask[0][0]],
+      // ['Appointments', this.appointmentTask[0][0]],
+      // ['Study', this.studyTask[0][0]],
+      ['Personal', 2],
+      ['Courses', 4],
+      ['Appointments', 1],
+      ['Study', 3]
     ];
 
     let config1 = {'pieHole': 0.4};

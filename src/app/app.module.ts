@@ -53,8 +53,11 @@ import { BreadcrumbComponent } from './components/sharedComponents/breadcrumb/br
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { DailyScheduleComponent } from './components/daily-schedule/daily-schedule.component';
 import { WeeklyScheduleComponent } from './components/weekly-schedule/weekly-schedule.component';
+
 import { NewTaskFormComponent } from './components/new-task-form/new-task-form.component';
 import { NewCourseTaskForm } from './components/individual-course/individual-course.component';
+import {NewTaskForm} from "./components/daily-schedule/daily-schedule.component";
+
 import { WidgetComponent } from './components/widget/widget.component';
 import { IndividualCourseComponent } from './components/individual-course/individual-course.component';
 import { LoginmenuComponent } from './components/loginmenu/loginmenu.component';
@@ -95,6 +98,7 @@ import {GooglechartService} from "./services/googlechart.service";
     IndividualCourseComponent,
     NewTaskFormComponent,
     NewCourseTaskForm,
+    NewTaskForm,
     LoginmenuComponent,
     PopoverComponent,
     ModalComponent
@@ -124,7 +128,7 @@ import {GooglechartService} from "./services/googlechart.service";
     // MatDialogRef
     // GoogleChartsModule
   ],
-  entryComponents: [NewCourseTaskForm],
+  entryComponents: [NewCourseTaskForm, NewTaskForm],
   // Each guard just check that the user have an specific characteristic to authorize the navegation. In this case it checks that the user
   // have the role to enter the respective pages. It is like and RBAC but for Angular.
   providers: [AuthService, TaskService, AuthGuard, AdminGuard, StudentGuard, StudentService, ErroralertService, CourseService, GooglechartService],

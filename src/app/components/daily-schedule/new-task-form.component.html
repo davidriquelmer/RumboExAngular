@@ -1,0 +1,45 @@
+<h3 mat-dialog-title="">New Task</h3>
+
+<div mat-dialog-content class="form-container">
+  <ul>
+    <li>
+      Type:&nbsp;
+      <mat-radio-group>
+        <mat-radio-button value="personal">Personal</mat-radio-button>&nbsp;
+        <mat-radio-button value="study">Study</mat-radio-button>
+      </mat-radio-group>
+    </li>
+
+    <li>
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="Title" [(ngModel)]="data.title">
+      </mat-form-field>
+    </li>
+
+    <li>
+      <mat-form-field appearance="outline">
+        <textarea matInput placeholder="Description" [(ngModel)]="data.description"></textarea>
+      </mat-form-field>
+    </li>
+
+    <li>
+      <mat-form-field appearance="outline">
+        <input matInput [matDatepicker]="start_picker" placeholder="Starts" [(ngModel)]="data.start">
+          <mat-datepicker-toggle matSuffix [for]="start_picker"></mat-datepicker-toggle>
+          <mat-datepicker #start_picker></mat-datepicker>
+      </mat-form-field>
+    </li>
+
+    <li>
+      <mat-form-field appearance="outline">
+        <input matInput [matDatepicker]="end_picker" placeholder="Ends" [(ngModel)]="data.end">
+          <mat-datepicker-toggle matSuffix [for]="end_picker"></mat-datepicker-toggle>
+          <mat-datepicker #end_picker></mat-datepicker>
+      </mat-form-field>
+    </li>
+  </ul>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="data" >Create Task</button>
+</div>
