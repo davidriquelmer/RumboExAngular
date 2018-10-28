@@ -10,15 +10,18 @@ export class MainComponent {
 
   courses: Array<any>;
 
+  user = {
+    'id': sessionStorage.getItem('userid'),
+    'name': sessionStorage.getItem('username')
+  };
+
   constructor(private courseService: CourseService) {
 
   }
 
   ngOnInit() {
 
-    let curr_user_id = sessionStorage.getItem('userid');
-
-    this.courseService.get_courses(curr_user_id).subscribe(data => {
+    this.courseService.get_courses(this.user.id).subscribe(data => {
       this.courses = data;
       console.log('courses:', this.courses);
     });

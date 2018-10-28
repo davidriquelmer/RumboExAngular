@@ -67,6 +67,7 @@ import {PopoverComponent} from './components/popover/popover.component';
 import {ModalComponent} from './components/modal/modal.component';
 import {CourseService} from "./services/course.service";
 import {GooglechartService} from "./services/googlechart.service";
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 @NgModule({
@@ -101,7 +102,8 @@ import {GooglechartService} from "./services/googlechart.service";
     NewTaskForm,
     LoginmenuComponent,
     PopoverComponent,
-    ModalComponent
+    ModalComponent,
+    ProfileComponent
   ],
   imports: [ 
     MbscModule, 

@@ -10,3 +10,7 @@ mat-grid-tile {
 .form-container > * {
   width: 100%;
 }
+
+.mat-card{
+    margin-bottom: 10px;
+}

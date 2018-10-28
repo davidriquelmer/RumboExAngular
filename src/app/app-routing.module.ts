@@ -25,6 +25,7 @@ import {CalendarComponent} from './components/calendar/calendar.component';
 import {IndividualCourseComponent} from './components/individual-course/individual-course.component';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
 import {LoginmenuComponent} from './components/loginmenu/loginmenu.component';
+import {ProfileComponent} from "./components/profile/profile.component";
 
 
 const routes: Routes = [
@@ -54,7 +55,8 @@ const routes: Routes = [
       { path: 'this-week', component: WeeklyScheduleComponent, outlet: 'content' },
 
       { path: 'course', component: IndividualCourseComponent, outlet: 'content'},
-      { path: 'dashboard', component: DashboardComponent, outlet: 'content'}
+      { path: 'dashboard', component: DashboardComponent, outlet: 'content'},
+      { path: 'profile', component: ProfileComponent, outlet: 'content'}
     ]
   },
 ];
