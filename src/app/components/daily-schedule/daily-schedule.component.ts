@@ -57,7 +57,7 @@ export class DailyScheduleComponent  implements OnInit {
 
   mapTasksToCalendar(task) {
     this.events.push({
-      d: now,
+      d: task.start,
       text: task.title,
       color: '#00aabb',
       description: task.description
@@ -100,10 +100,10 @@ export class DailyScheduleComponent  implements OnInit {
     var description = data['description'];
     var start = data['start'];
     var end = data['end'];
-    var task = new Task(title, description, start, end, false);
-    console.log(task);
+    // var task = new Task(title, description, start, end, false);
+    // console.log(task);
     this.events.push({
-      d: now,
+      d: start,
       text: title,
       color: '#00aabb',
       description: description

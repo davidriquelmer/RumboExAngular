@@ -121,8 +121,8 @@ export class IndividualCourseComponent implements OnInit {
     var description = data['description'];
     var start = data['start'];
     var end = data['end'];
-    var task = new Task(title, description, start, end, false);
-    console.log(task);
+    // var task = new Task(title, description, start, end, false);
+    // console.log(task);
     // this.taskService.insert_study_task(data, this.curr_student_id, this.curr_course_id);
     this.authService.insert_study_task(data, this.curr_student_id, this.curr_course_id);
   }

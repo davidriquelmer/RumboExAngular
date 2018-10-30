@@ -1,4 +1,21 @@
-export class Student {
-  cosntructo() {
+import {User} from "./user";
+import {Course} from "./course";
+import {Task} from "./task";
+
+export interface Student extends User {
+  id: number,
+  username: string,
+  password: string,
+  email: string,
+  name: string,
+  lastname: string,
+  enrolled_program: number,
+  student_num: number,
+  courses: Course[],
+  tasks: {
+    'personal': Task[],
+    'study': Task[],
+    'course': Task[],
+    'appointment': Task[]
   }
 }

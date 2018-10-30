@@ -9,7 +9,8 @@ export class ProfileComponent implements OnInit {
 
   user = {
     'id': sessionStorage.getItem('userid'),
-    'name': sessionStorage.getItem('username')
+    'name': sessionStorage.getItem('username'),
+    'email': sessionStorage.getItem('email')
   };
 
   constructor() { }

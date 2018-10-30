@@ -69,6 +69,8 @@ import {CourseService} from "./services/course.service";
 import {GooglechartService} from "./services/googlechart.service";
 import { ProfileComponent } from './components/profile/profile.component';
 
+import {StoreModule} from '@ngrx/store';
+import {reducer} from './reducers/student.reducer';
 
 @NgModule({
   declarations: [
@@ -129,6 +131,9 @@ import { ProfileComponent } from './components/profile/profile.component';
     // MatDialog,
     // MatDialogRef
     // GoogleChartsModule
+    StoreModule.forRoot({
+      student: reducer
+    })
   ],
   entryComponents: [NewCourseTaskForm, NewTaskForm],
   // Each guard just check that the user have an specific characteristic to authorize the navegation. In this case it checks that the user

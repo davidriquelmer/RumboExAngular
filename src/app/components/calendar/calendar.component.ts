@@ -3,6 +3,12 @@ import {MbscEventcalendarOptions, mobiscroll} from '@mobiscroll/angular';
 import { TaskService } from "../../services/task.service";
 import {PopoverComponent} from "../popover/popover.component";
 
+import {Observable} from "rxjs";
+import {Store} from '@ngrx/store';
+import {Student} from "../../models/student";
+import {AppState} from "../../app.state";
+import * as StudentActions from '../../actions/student.action';
+
 // mobiscroll.settings = {
 //     theme: 'web'
 // };
@@ -19,6 +25,8 @@ export class CalendarComponent {
 
   current_user_id = sessionStorage.getItem('userid');
 
+  student: Observable<Student>;
+
   studyTasks: any = [];
   personalTasks: any = [];
   courseTasks: any = [];
@@ -27,13 +35,22 @@ export class CalendarComponent {
 
   showModal: Boolean = false;
 
-  constructor(private taskService: TaskService) {}
+  constructor(private taskService: TaskService,
+              private store: Store<AppState>) {
+    this.student = store.select('student');
+    this.student.subscribe(data => {
+      this.studyTasks = data.tasks.study;
+      this.personalTasks = data.tasks.personal;
+      this.mapPersonalTaskToCalendar();
+      this.mapStudyTaskToCalendar();
+    })
+  }
 
 
   ngOnInit() {
 
-    this.loadTasks();
-    this.addPersonalTask();
+    // this.loadTasks();
+    // this.addPersonalTask();
 
     $("button").click(function(){
       this.showModal = true;
@@ -97,8 +114,8 @@ export class CalendarComponent {
       {
         title: 'eat',
         description: 'because im hungry',
-        start: now,
-        end: now,
+        start: 7,
+        end: 8,
         finished: false
       }
     );

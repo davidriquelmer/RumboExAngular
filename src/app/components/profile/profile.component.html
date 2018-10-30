@@ -22,21 +22,28 @@
   </mat-card>
 </div>
 
-<div class="col-sm-4">
-  <mat-card>
-    <div class="card-body">
-      <div class="card-two">
-        <header>
-          <div class="avatar">
-            <img src="https://randomuser.me/api/portraits/women/21.jpg" alt="{{user.name}}" />
-          </div>
-        </header>
-        <h3>{{user.name}}</h3>
-        <div class="desc">
-          Escuela de Ingeniería de Computadoras - 4to Año
+<div class="row">
+
+<mat-card class="col">
+  <div class="card-body">
+    <div class="card-two">
+      <header>
+        <div class="avatar">
+          <img src="https://randomuser.me/api/portraits/women/21.jpg" alt="{{user.name}}" />
         </div>
+      </header>
+      <h3>{{user.name}}</h3>
+      <div class="desc">
+        Escuela de Ingeniería de Computadoras - 4to Año
       </div>
     </div>
-  </mat-card>
-</div>
+  </div>
+</mat-card>
 
+<mat-card class="col-sm-8">
+  <mat-card-title>Student Details</mat-card-title>
+  <h5>Email Address</h5>
+  <div>{{user.email}}</div>
+</mat-card>
+
+</div>
