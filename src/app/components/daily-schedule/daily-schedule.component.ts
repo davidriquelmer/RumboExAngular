@@ -5,6 +5,11 @@ import {TaskService} from "../../services/task.service";
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material";
 import {Task} from "../../models/task";
 import {NewCourseTaskForm} from "../individual-course/individual-course.component";
+import {Store} from "@ngrx/store";
+import {AppState} from "../../app.state";
+
+import {Observable} from "rxjs";
+import {Student} from "../../models/student";
 
 let now = new Date();
 
@@ -16,6 +21,8 @@ let now = new Date();
 
 export class DailyScheduleComponent  implements OnInit {
 
+  student: Observable<Student>;
+
   current_user_id = sessionStorage.getItem('userid');
 
   studyTasks: any = [];
@@ -25,11 +32,20 @@ export class DailyScheduleComponent  implements OnInit {
   events: Array<any> = [];
 
   constructor(private taskService: TaskService,
-              public dialog: MatDialog) { }
+              public dialog: MatDialog,
+              private store: Store<AppState>) {
+    this.student = store.select('student');
+    this.student.subscribe(data => {
+      this.studyTasks = data.tasks.study;
+      this.personalTasks = data.tasks.personal;
+      this.mapPersonalTaskToCalendar();
+      this.mapStudyTaskToCalendar();
+    })
+}
 
   ngOnInit() {
 
-    this.loadTasks();
+    // this.loadTasks();
 
   }
 
@@ -57,7 +73,7 @@ export class DailyScheduleComponent  implements OnInit {
 
   mapTasksToCalendar(task) {
     this.events.push({
-      d: task.start,
+      d: now,
       text: task.title,
       color: '#00aabb',
       description: task.description
