@@ -59,6 +59,11 @@ const routes: Routes = [
       { path: 'profile', component: ProfileComponent, outlet: 'content'}
     ]
   },
+
+  // default path, when the path in the URL is empty
+  { path: '', component: LoginmenuComponent },
+  // when the requested URL doesn't match any defined path
+  { path: '**', redirectTo: '/' },
 ];
 
 @NgModule({
