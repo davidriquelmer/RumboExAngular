@@ -70,7 +70,16 @@ import {GooglechartService} from "./services/googlechart.service";
 import { ProfileComponent } from './components/profile/profile.component';
 
 import {StoreModule} from '@ngrx/store';
-import {reducer} from './reducers/student.reducer';
+import {reducer} from './store2/reducers/student.reducer';
+import {EffectsModule} from "@ngrx/effects";
+// import {StudentEffect} from "./store2/effects/student.effect";
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { reducers, metaReducers } from './store/reducers';
+import { environment } from '../environments/environment';
+import { StudentEffects } from './store/effects/student.effects';
+import {CourseEffects} from "./store/effects/course.effects";
+import { PsychologistmainComponent } from './components/mains/psychologistmain/psychologistmain.component';
+import { MessagesComponent } from './components/messages/messages.component';
 
 @NgModule({
   declarations: [
@@ -105,10 +114,12 @@ import {reducer} from './reducers/student.reducer';
     LoginmenuComponent,
     PopoverComponent,
     ModalComponent,
-    ProfileComponent
+    ProfileComponent,
+    PsychologistmainComponent,
+    MessagesComponent
   ],
-  imports: [ 
-    MbscModule, 
+  imports: [
+    MbscModule,
     BrowserModule,
     FormsModule,
     MaterialsModule,
@@ -133,7 +144,10 @@ import {reducer} from './reducers/student.reducer';
     // GoogleChartsModule
     StoreModule.forRoot({
       student: reducer
-    })
+    }),
+    EffectsModule.forRoot([StudentEffects, CourseEffects]),
+    StoreModule.forRoot(reducers, { metaReducers }),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
   entryComponents: [NewCourseTaskForm, NewTaskForm],
   // Each guard just check that the user have an specific characteristic to authorize the navegation. In this case it checks that the user

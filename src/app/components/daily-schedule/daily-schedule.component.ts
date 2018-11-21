@@ -10,6 +10,7 @@ import {AppState} from "../../app.state";
 
 import {Observable} from "rxjs";
 import {Student} from "../../models/student";
+import {StudentState} from "../../store2/reducers/student.reducer";
 
 let now = new Date();
 
@@ -21,7 +22,7 @@ let now = new Date();
 
 export class DailyScheduleComponent  implements OnInit {
 
-  student: Observable<Student>;
+  student: Observable<StudentState>;
 
   current_user_id = sessionStorage.getItem('userid');
 
@@ -34,13 +35,14 @@ export class DailyScheduleComponent  implements OnInit {
   constructor(private taskService: TaskService,
               public dialog: MatDialog,
               private store: Store<AppState>) {
-    this.student = store.select('student');
-    this.student.subscribe(data => {
-      this.studyTasks = data.tasks.study;
-      this.personalTasks = data.tasks.personal;
-      this.mapPersonalTaskToCalendar();
-      this.mapStudyTaskToCalendar();
-    })
+
+    // this.student = store2.select('student');
+    // this.student.subscribe(data => {
+    //   this.studyTasks = data.student.tasks.study;
+    //   this.personalTasks = data.student.tasks.personal;
+    //   this.mapPersonalTaskToCalendar();
+    //   this.mapStudyTaskToCalendar();
+    // })
 }
 
   ngOnInit() {

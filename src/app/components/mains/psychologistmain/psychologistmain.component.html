@@ -14,14 +14,8 @@
               <span><img src="/images/logo-text.png" alt="homepage" class="dark-logo" /></span>
           </a>
       </div>
-    <a class="nav-link dropdown-toggle text-muted text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-bell"></i>
-                <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
-              </a>
-    <a class="nav-link dropdown-toggle text-muted  " href="#" id="2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-envelope"></i>
-                <div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
-              </a>
-    <li class="nav-item dropdown">
 
+    <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{user.name}}&nbsp;&nbsp;<img src="images/users/5.jpg" alt="user" class="profile-pic" /></a>
                     <div class="dropdown-menu dropdown-menu-right animated zoomIn">
                         <ul class="dropdown-user">
@@ -50,7 +44,7 @@
               <li class="nav-item"> <a class="has-arrow  " [routerLink]="[ '/main', { outlets: { content: 'dashboard' } }]"
                                        aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Dashboard</span></a>
               </li>
-              <li class="nav-label">Courses</li>
+              <li class="nav-label">Students</li>
               <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-columns"></i><span class="hide-menu">Courses</span></a>
                   <ul aria-expanded="false" class="collapse">
                     <div *ngFor="let c of courses">

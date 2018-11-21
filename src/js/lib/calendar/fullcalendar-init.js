@@ -15,7 +15,7 @@
 
 
     /* on drop */
-    CalendarApp.prototype.onDrop = function (eventObj, date) { 
+    CalendarApp.prototype.onDrop = function (eventObj, date) {
         var $this = this;
             // retrieve the dropped element's stored Event Object
             var originalEventObject = eventObj.data('eventObject');
@@ -90,14 +90,14 @@
                         end: end,
                         allDay: false,
                         className: categoryClass
-                    }, true);  
+                    }, true);
                     $this.$modal.modal('hide');
                 }
                 else{
                     alert('You have to give a title to your event');
                 }
                 return false;
-                
+
             });
             $this.$calendarObj.fullCalendar('unselect');
     },
@@ -109,7 +109,7 @@
             var eventObject = {
                 title: $.trim($(this).text()) // use the element's text as the event title
             };
-            // store the Event Object in the DOM element so we can get to it later
+            // store2 the Event Object in the DOM element so we can get to it later
             $(this).data('eventObject', eventObject);
             // make the event draggable using jQuery UI
             $(this).draggable({
@@ -149,10 +149,10 @@
         $this.$calendarObj = $this.$calendar.fullCalendar({
             slotDuration: '00:15:00', /* If we want to split day time each 15minutes */
             minTime: '08:00:00',
-            maxTime: '19:00:00',  
-            defaultView: 'month',  
-            handleWindowResize: true,   
-            height: $(window).height() - 200,   
+            maxTime: '19:00:00',
+            defaultView: 'month',
+            handleWindowResize: true,
+            height: $(window).height() - 200,
             header: {
                 left: 'prev,next today',
                 center: 'title',
@@ -183,7 +183,7 @@
 
    //init CalendarApp
     $.CalendarApp = new CalendarApp, $.CalendarApp.Constructor = CalendarApp
-    
+
 }(window.jQuery),
 
 //initializing CalendarApp

@@ -1440,11 +1440,11 @@ for (var func in conversions) {
   // export rgb2hsl and ["rgb"]["hsl"]
   convert[from] = convert[from] || {};
 
-  convert[from][to] = convert[func] = (function(func) { 
+  convert[from][to] = convert[func] = (function(func) {
     return function(arg) {
       if (typeof arg == "number")
         arg = Array.prototype.slice.call(arguments);
-      
+
       var val = conversions[func](arg);
       if (typeof val == "string" || val === undefined)
         return val; // keyword
@@ -1472,12 +1472,12 @@ Converter.prototype.routeSpace = function(space, args) {
    }
    // color.rgb(10, 10, 10)
    if (typeof values == "number") {
-      values = Array.prototype.slice.call(args);        
+      values = Array.prototype.slice.call(args);
    }
 
    return this.setValues(space, values);
 };
-  
+
 /* Set the values for a space, invalidating cache */
 Converter.prototype.setValues = function(space, values) {
    this.space = space;
@@ -4225,11 +4225,11 @@ function Duration (duration) {
         minutes * 6e4 + // 1000 * 60
         hours * 1000 * 60 * 60; //using 1000 * 60 * 60 instead of 36e5 to avoid floating point rounding errors https://github.com/moment/moment/issues/2978
     // Because of dateAddRemove treats 24 hours as different from a
-    // day when working around DST, we need to store them separately
+    // day when working around DST, we need to store2 them separately
     this._days = +days +
         weeks * 7;
     // It is impossible translate months into days without knowing
-    // which months you are are talking about, so we have to store
+    // which months you are are talking about, so we have to store2
     // it separately.
     this._months = +months +
         quarters * 3 +
@@ -15101,7 +15101,7 @@ module.exports = function(Chart) {
 			 * We assume the radius of the polygon is half the size of the canvas at first
 			 * at each index we check if the text overlaps.
 			 *
-			 * Where it does, we store that angle and that index.
+			 * Where it does, we store2 that angle and that index.
 			 *
 			 * After finding the largest index and angle we calculate how much we need to remove
 			 * from the shape radius to move the point inwards by that x.

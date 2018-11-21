@@ -3,6 +3,12 @@ import {Router} from '@angular/router';
 import {User} from '../../../models/user';
 import {AuthService} from '../../../services/auth.service';
 import {ErroralertService} from '../../../services/erroralert.service';
+import {Store} from '@ngrx/store';
+// import {AppState} from 'src/app/app.state';
+import * as fromRoot from '../../../store/reducers';
+import * as studentActions from '../../../store/actions/student.actions';
+import * as courseActions from '../../../store/actions/course.actions';
+
 
 @Component({
   selector: 'app-studentlogin',
@@ -12,7 +18,7 @@ import {ErroralertService} from '../../../services/erroralert.service';
 export class StudentloginComponent implements OnInit {
   user: User = new User();
 
-  constructor(private auth: AuthService, private router: Router, private error: ErroralertService) { }
+  constructor(private auth: AuthService, private router: Router, private error: ErroralertService, private store: Store<fromRoot.State>) { }
 
   ngOnInit() {
   }
@@ -34,6 +40,12 @@ export class StudentloginComponent implements OnInit {
       console.log(sessionStorage.getItem('username'));
       console.log(sessionStorage.getItem('email'));
       console.log(sessionStorage.getItem('role'));
+
+      // Load user data
+      this.store.dispatch(new studentActions.LoadStudent());
+      //Load student's courses
+      // this.store.dispatch(new courseActions.LoadCourses());
+
       this.router.navigate(['/main']);
     })
     .catch((err) => {

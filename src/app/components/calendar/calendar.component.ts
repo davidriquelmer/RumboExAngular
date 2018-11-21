@@ -4,10 +4,10 @@ import { TaskService } from "../../services/task.service";
 import {PopoverComponent} from "../popover/popover.component";
 
 import {Observable} from "rxjs";
-import {Store} from '@ngrx/store';
+import {Store, State} from '@ngrx/store';
 import {Student} from "../../models/student";
 import {AppState} from "../../app.state";
-import * as StudentActions from '../../actions/student.action';
+import * as StudentActions from '../../store2/actions/student.action';
 
 // mobiscroll.settings = {
 //     theme: 'web'
@@ -25,7 +25,7 @@ export class CalendarComponent {
 
   current_user_id = sessionStorage.getItem('userid');
 
-  student: Observable<Student>;
+  student: Observable<any>;
 
   studyTasks: any = [];
   personalTasks: any = [];
