@@ -19,13 +19,25 @@ import {StatusComponent} from './components/status/status.component';
 import {AdminGuard} from './guards/admin.guard';
 
 import {WeeklyScheduleComponent} from './components/weekly-schedule/weekly-schedule.component';
-import {DailyScheduleComponent} from './components/daily-schedule/daily-schedule.component';
+import {DailyScheduleComponent, NewTaskForm} from './components/daily-schedule/daily-schedule.component';
 import {CalendarComponent} from './components/calendar/calendar.component';
 
-import {IndividualCourseComponent} from './components/individual-course/individual-course.component';
+import {IndividualCourseComponent, NewCourseTaskForm} from './components/individual-course/individual-course.component';
 import {DashboardComponent} from './components/dashboard/dashboard.component';
 import {LoginmenuComponent} from './components/loginmenu/loginmenu.component';
 import {ProfileComponent} from "./components/profile/profile.component";
+import {CounselormainComponent} from "./components/mains/counselormain/counselormain.component";
+import {WidgetComponent} from "./components/widget/widget.component";
+import {AppComponent} from "./app.component";
+import {ModalComponent} from "./components/modal/modal.component";
+import {NewTaskFormComponent} from "./components/new-task-form/new-task-form.component";
+import {PsychologistmainComponent} from "./components/mains/psychologistmain/psychologistmain.component";
+import {ErroralertComponent} from "./components/erroralert/erroralert.component";
+import {MessagesComponent} from "./components/messages/messages.component";
+import {SidebarComponent} from "./components/sharedComponents/sidebar/sidebar.component";
+import {BreadcrumbComponent} from "./components/sharedComponents/breadcrumb/breadcrumb.component";
+import {TopnavbarComponent} from "./components/sharedComponents/topnavbar/topnavbar.component";
+import {PopoverComponent} from "./components/popover/popover.component";
 
 
 const routes: Routes = [
@@ -67,10 +79,47 @@ const routes: Routes = [
 ];
 
 @NgModule({
+  // declarations: [
+  //   AppComponent,
+  //   LoginComponent,
+  //   StatusComponent,
+  //   MainComponent,
+  //   ScheduleComponent,
+  //   LogoutComponent,
+  //   AdminloginComponent,
+  //   StudentloginComponent,
+  //   CounselorloginComponent,
+  //   MentorloginComponent,
+  //   ProfessorloginComponent,
+  //   RegisterComponent,
+  //   AdvisorloginComponent,
+  //   CounselormainComponent,
+  //   AdminmainComponent,
+  //   ErroralertComponent,
+  //   SidebarComponent,
+  //   TopnavbarComponent,
+  //   BreadcrumbComponent,
+  //   DashboardComponent,
+  //   CalendarComponent,
+  //   DailyScheduleComponent,
+  //   WeeklyScheduleComponent,
+  //   WidgetComponent,
+  //   IndividualCourseComponent,
+  //   NewTaskFormComponent,
+  //   NewCourseTaskForm,
+  //   NewTaskForm,
+  //   LoginmenuComponent,
+  //   PopoverComponent,
+  //   ModalComponent,
+  //   ProfileComponent,
+  //   PsychologistmainComponent,
+  //   MessagesComponent
+  // ],
   imports: [ RouterModule.forRoot(routes
     // Uncomment this for testing purposes
     // ,{enableTracing: true}
     ) ],
+  entryComponents: [NewCourseTaskForm, NewTaskForm],
   exports: [ RouterModule ]
 })
 

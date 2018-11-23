@@ -4,22 +4,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import {AngularMaterialModule} from "./angular-material.module";
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatCardModule} from '@angular/material/card';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatListModule} from '@angular/material/list';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
-import {MatChipsModule} from '@angular/material/chips';
-import {MatGridListModule} from '@angular/material/grid-list';
-import {MatTableModule} from '@angular/material/table';
-import {MatExpansionModule} from '@angular/material/expansion';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatButtonModule} from '@angular/material/button';
-import {MatTooltipModule} from '@angular/material/tooltip';
-// import {MatDialog, MatDialogRef} from "@angular/material/dialog";
+
 
 // import {GoogleChartsModule} from 'angular-google-charts';
 
@@ -69,9 +57,9 @@ import {CourseService} from "./services/course.service";
 import {GooglechartService} from "./services/googlechart.service";
 import { ProfileComponent } from './components/profile/profile.component';
 
-import {StoreModule} from '@ngrx/store';
-import {reducer} from './store2/reducers/student.reducer';
-import {EffectsModule} from "@ngrx/effects";
+// import {StoreModule} from '@ngrx/store';
+// import {reducer} from './store2/reducers/student.reducer';
+// import {EffectsModule} from "@ngrx/effects";
 // import {StudentEffect} from "./store2/effects/student.effect";
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducers, metaReducers } from './store/reducers';
@@ -80,6 +68,8 @@ import { StudentEffects } from './store/effects/student.effects';
 import {CourseEffects} from "./store/effects/course.effects";
 import { PsychologistmainComponent } from './components/mains/psychologistmain/psychologistmain.component';
 import { MessagesComponent } from './components/messages/messages.component';
+import {TaskEffects} from "./store/effects/task.effects";
+import {AppStoreModule} from "./app-store.module";
 
 @NgModule({
   declarations: [
@@ -125,31 +115,11 @@ import { MessagesComponent } from './components/messages/messages.component';
     MaterialsModule,
     HttpClientModule,
     AppRoutingModule,
+    AngularMaterialModule,
     BrowserAnimationsModule,
-    MatCardModule,
-    MatCheckboxModule,
-    MatListModule,
-    MatProgressBarModule,
-    MatChipsModule,
-    MatGridListModule,
-    MatTableModule,
-    MatExpansionModule,
-    MatFormFieldModule,
-    MatDatepickerModule,
-    MatDialogModule,
-    MatButtonModule,
-    MatTooltipModule,
-    // MatDialog,
-    // MatDialogRef
-    // GoogleChartsModule
-    StoreModule.forRoot({
-      student: reducer
-    }),
-    EffectsModule.forRoot([StudentEffects, CourseEffects]),
-    StoreModule.forRoot(reducers, { metaReducers }),
-    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    AppStoreModule
   ],
-  entryComponents: [NewCourseTaskForm, NewTaskForm],
+  // entryComponents: [NewCourseTaskForm, NewTaskForm],
   // Each guard just check that the user have an specific characteristic to authorize the navegation. In this case it checks that the user
   // have the role to enter the respective pages. It is like and RBAC but for Angular.
   providers: [AuthService, TaskService, AuthGuard, AdminGuard, StudentGuard, StudentService, ErroralertService, CourseService, GooglechartService],
