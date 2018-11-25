@@ -17,21 +17,20 @@ export class StudentEffects {
               private studentService: StudentService) {}
 
   @Effect()
-  loadStudent$: Observable<Action> = this.studentService.getStudent(sessionStorage.getItem('userid'))
-    .pipe(map(user => {
-      return new studentActions.SetStudent(user);
-    }))
-  //   this.actions$.pipe(
-  //   ofType(studentActions.StudentActionTypes.LoadStudent),
-  //   switchMap(() => {
-  //     let url: string = 'http://localhost:5000/student/'+sessionStorage.getItem('userid');
-  //     console.log(url);
-  //     return this.http.get<Student>(url)
-  //       .pipe(
-  //         map((user) => {
-  //           return new studentActions.SetStudent(user);
-  //         })
-  //       )
-  //   })
-  // )
+  loadStudent$: Observable<Action> =
+    // this.studentService.getStudent(sessionStorage.getItem('userid'))
+    // .pipe(map(user => {
+    //   return new studentActions.SetStudent(user);
+    // }))
+    this.actions$.pipe(
+    ofType(studentActions.StudentActionTypes.LoadStudent),
+    switchMap(() => {
+      return this.studentService.getStudent(sessionStorage.getItem('userid'))
+        .pipe(
+          map((user) => {
+            return new studentActions.SetStudent(user);
+          })
+        )
+    })
+  )
 }

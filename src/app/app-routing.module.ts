@@ -10,7 +10,7 @@ import {AdvisorloginComponent} from './components/logins/advisorlogin/advisorlog
 import {StudentloginComponent} from './components/logins/studentlogin/studentlogin.component';
 
 import {ScheduleComponent} from './components/schedule/schedule.component';
-import {MainComponent} from './components/mains/main/main.component';
+import {StudentmainComponent} from './components/mains/main/studentmain.component';
 import {RegisterComponent} from './components/register/register.component';
 import {AdminmainComponent} from './components/mains/adminmain/adminmain.component';
 import {LogoutComponent} from './components/logout/logout.component';
@@ -38,6 +38,7 @@ import {SidebarComponent} from "./components/sharedComponents/sidebar/sidebar.co
 import {BreadcrumbComponent} from "./components/sharedComponents/breadcrumb/breadcrumb.component";
 import {TopnavbarComponent} from "./components/sharedComponents/topnavbar/topnavbar.component";
 import {PopoverComponent} from "./components/popover/popover.component";
+import {MentormainComponent} from "./components/mains/mentormain/mentormain.component";
 
 
 const routes: Routes = [
@@ -61,7 +62,7 @@ const routes: Routes = [
 
   // Student app routes
   // { path: '', redirectTo: '/main', pathMatch: 'full' },
-  { path: 'main', component: MainComponent,  canActivate: [AuthGuard], children: [
+  { path: 'studentmain', component: StudentmainComponent,  canActivate: [AuthGuard], children: [
       { path: 'calendar', component: CalendarComponent, outlet: 'content' },
       { path: 'today', component: DailyScheduleComponent, outlet: 'content' },
       { path: 'this-week', component: WeeklyScheduleComponent, outlet: 'content' },
@@ -71,6 +72,11 @@ const routes: Routes = [
       { path: 'profile', component: ProfileComponent, outlet: 'content'}
     ]
   },
+
+  // Mentor routes
+  { path: 'mentormain', component: MentormainComponent, canActivate: [AuthGuard], children: [
+      { path: 'profile', component: ProfileComponent, outlet: 'content'}
+    ]},
 
   // default path, when the path in the URL is empty
   { path: '', component: LoginmenuComponent },
@@ -83,7 +89,7 @@ const routes: Routes = [
   //   AppComponent,
   //   LoginComponent,
   //   StatusComponent,
-  //   MainComponent,
+  //   StudentmainComponent,
   //   ScheduleComponent,
   //   LogoutComponent,
   //   AdminloginComponent,
@@ -113,7 +119,7 @@ const routes: Routes = [
   //   ModalComponent,
   //   ProfileComponent,
   //   PsychologistmainComponent,
-  //   MessagesComponent
+  //   MessagesMenuComponent
   // ],
   imports: [ RouterModule.forRoot(routes
     // Uncomment this for testing purposes

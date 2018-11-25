@@ -7,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopnavbarComponent implements OnInit {
 
+  role = sessionStorage.getItem('role');
+  mainpath = '/'+this.role+'main'
+  user = sessionStorage.getItem('token');
+
   constructor() { }
 
   ngOnInit() {

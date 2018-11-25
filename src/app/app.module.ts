@@ -15,7 +15,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/logins/login/login.component';
 import { AuthService } from './services/auth.service';
 import { StatusComponent } from './components/status/status.component';
-import { MainComponent } from './components/mains/main/main.component';
+import { StudentmainComponent } from './components/mains/main/studentmain.component';
 import { ScheduleComponent } from './components/schedule/schedule.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { AuthGuard} from './guards/auth.guard';
@@ -70,13 +70,16 @@ import { PsychologistmainComponent } from './components/mains/psychologistmain/p
 import { MessagesComponent } from './components/messages/messages.component';
 import {TaskEffects} from "./store/effects/task.effects";
 import {AppStoreModule} from "./app-store.module";
+import { MentormainComponent } from './components/mains/mentormain/mentormain.component';
+import { StudentListComponent } from './components/student-list/student-list.component';
+import { NotificationsComponent } from './components/sharedComponents/notifications/notifications.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     StatusComponent,
-    MainComponent,
+    StudentmainComponent,
     ScheduleComponent,
     LogoutComponent,
     AdminloginComponent,
@@ -106,7 +109,10 @@ import {AppStoreModule} from "./app-store.module";
     ModalComponent,
     ProfileComponent,
     PsychologistmainComponent,
-    MessagesComponent
+    MessagesComponent,
+    MentormainComponent,
+    StudentListComponent,
+    NotificationsComponent
   ],
   imports: [
     MbscModule,

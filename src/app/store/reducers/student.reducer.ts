@@ -6,29 +6,11 @@ import * as studentActions from '../actions/student.actions';
 
 
 export interface State {
-  student: {
-    user: Student,
-    courses: Course[],
-    tasks: {
-      course: Task[],
-      study: Task[],
-      appointment: Task[],
-      personal: Task[]
-    }
-  }
+    user: Student
 }
 
 export const initialState: State = {
-  student: {
-    user: null,
-    courses: [],
-    tasks: {
-      course: [],
-      study: [],
-      appointment: [],
-      personal: []
-    }
-  }
+    user: null
 };
 
 export function reducer(state = initialState, action: studentActions.StudentActions): State {
@@ -42,6 +24,8 @@ export function reducer(state = initialState, action: studentActions.StudentActi
 }
 
 function handleSetStudent(state: State, action: studentActions.SetStudent): State {
-  state.student.user = action.payload;
-  return state;
+  return {
+    user: action.payload
+  };
+
 }

@@ -65,8 +65,8 @@ export class TaskService {
     return this.http.post<Task>(url, task, {headers: this.httpheaders}).toPromise();
   }
 
-  get_all() {
-    return this.http.get(this.BASE_URL);
+  get_all(): Observable<Task[]> {
+    return this.http.get<Task[]>(this.BASE_URL);
   }
 
 }

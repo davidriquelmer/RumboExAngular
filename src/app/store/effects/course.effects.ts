@@ -15,7 +15,7 @@ export class CourseEffects {
 
   constructor(private actions$: Actions,
               private http: HttpClient,
-              private courseService: CourseService) {}
+              public courseService: CourseService) {}
 
 
   @Effect()
@@ -30,12 +30,14 @@ export class CourseEffects {
 function handleCourse(c: any[]): Action {
   let courses: Course[] = [];
   for(let i=0; i<c.length; i++) {
+    console.log(c[i]);
     console.log(c[i].codification);
-      let grades = this.getGrades(c[i].codification);
+    let course_id: number = c[i].codification;
+      var grades: Grade[] = getGrades(course_id);
       console.log(grades);
-      let avg = this.getCumAvg(grades);
-      let status = this.setStatus(avg);
-      let course: Course = {
+      var avg: number = getCumAvg(grades);
+      var status: Status = setStatus(avg);
+      var course: Course = {
         codification: c[i].codification,
         name: c[i].course_name,
         professor_id: c[i].professor_id,
@@ -55,10 +57,17 @@ function handleCourse(c: any[]): Action {
 
 function getGrades(course_id: number): Grade[] {
   console.log('aqui llega');
-  this.courseService.get_grades_by_course_id(course_id)
-    .pipe(map(grade => {
-      return grade;
-    }));
+  console.log(course_id);
+  let courseService: CourseService;
+  courseService.get_grades_by_course_id(course_id)
+    .subscribe(grades => {
+      console.log(grades);
+      return grades;
+    });
+    // .pipe(map(grade => {
+    //   console.log(grade);
+    //   return grade;
+    // }));
   return;
 }
 
