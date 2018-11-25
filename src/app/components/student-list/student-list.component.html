@@ -1,15 +1,31 @@
-<mat-list>
-   <h3 matSubheader>Folders</h3>
-   <mat-list-item *ngFor="let folder of folders">
-      <mat-icon matListIcon>folder</mat-icon>
-      <h4 matLine>{{folder.name}}</h4>
-      <p matLine class="demo-2"> {{folder.updated}} </p>
-   </mat-list-item>
-   <mat-divider></mat-divider>
-   <h3 matSubheader>Notes</h3>
-   <mat-list-item *ngFor="let note of notes">
-      <mat-icon matListIcon>note</mat-icon>
-      <h4 matLine>{{note.name}}</h4>
-      <p matLine class="demo-2"> {{note.updated}} </p>
-   </mat-list-item>
-</mat-list>
+<mat-card>
+  <mat-list>
+    <h1 matSubheader>Students</h1>
+    <mat-paginator [length]="200"
+              [pageSize]="10"
+              [pageSizeOptions]="[1, 5, 10, 25, 100]">
+    </mat-paginator>
+
+    <mat-tab-group>
+      <mat-tab *ngFor="let department of departments" label="{{department.name}}">
+        <div *ngFor="let student of students">
+          <mat-list-item *ngIf="student.enrolled_program==department.num">
+            <h3 matLine> {{student.name}} {{student.lastname}}</h3>
+            <p matLine>
+              <span> {{student.email}} </span>
+              <span class="demo-2" align="right">Send Message</span>
+            </p>
+          </mat-list-item>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+
+    <!--<mat-list-item *ngFor="let student of students">-->
+      <!--<h3 matLine> {{student.name}} {{student.lastname}}</h3>-->
+      <!--<p matLine>-->
+        <!--<span> {{student.email}} </span>-->
+        <!--<span class="demo-2"> &#45;&#45; Message </span>-->
+      <!--</p>-->
+    <!--</mat-list-item>-->
+  </mat-list>
+</mat-card>

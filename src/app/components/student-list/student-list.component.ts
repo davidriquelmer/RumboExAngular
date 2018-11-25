@@ -10,21 +10,22 @@ import {Student} from "../../models/student";
 export class StudentListComponent implements OnInit {
 
   students: Array<Student>;
-  folders = [
-    {name: 'uno', updated: '1'},
-    {name: 'dos', updated: '2'}
-  ];
-  notes = [
-    {name: 'this is supposed to be a demo', updated: true}
+
+  departments = [
+    {num: 4321, name: 'Artes y Ciencias'},
+    {num: 9987, name: 'CIencias Agricolas'},
+    {num: 1234, name: 'Ingenieria'},
+    {num: 7856, name: 'Administracion de Empresas'}
   ];
 
+  alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
 
   constructor(private studentService: StudentService) { }
 
   ngOnInit() {
     this.studentService.getstudentlist().subscribe(data => {
       console.log(data);
-      this.students = data;
+      this.students = data.Users;
     })
   }
 

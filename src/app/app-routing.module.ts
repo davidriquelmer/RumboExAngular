@@ -76,7 +76,20 @@ const routes: Routes = [
   // Mentor routes
   { path: 'mentormain', component: MentormainComponent, canActivate: [AuthGuard], children: [
       { path: 'profile', component: ProfileComponent, outlet: 'content'}
-    ]},
+    ]
+  },
+
+  //Counselor routes
+  { path: 'counselormain', component: CounselormainComponent, canActivate: [AuthGuard], children: [
+      { path: 'profile', component: ProfileComponent, outlet: 'content'}
+    ]
+  },
+
+  // Psychologist routes
+  { path: 'psychologistmain', component: PsychologistmainComponent, canActivate: [AuthGuard], children: [
+      { path: 'profile', component: ProfileComponent, outlet: 'content'}
+    ]
+  },
 
   // default path, when the path in the URL is empty
   { path: '', component: LoginmenuComponent },

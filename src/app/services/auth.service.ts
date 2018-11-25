@@ -35,6 +35,11 @@ export class AuthService {
     return this.http.post(url, user, {headers: this.httpheaders}).toPromise();
   }
 
+  psychologistlogin(user): Promise<any> {
+    let url: string = `${this.BASE_URL}/psychologistlogin`;
+    return this.http.post(url, user, {headers: this.httpheaders}).toPromise();
+  }
+
   professorlogin(user): Promise<any> {
     let url: string = `${this.BASE_URL}/professorlogin`;
     return this.http.post(url, user, {headers: this.httpheaders}).toPromise();

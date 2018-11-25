@@ -18,9 +18,9 @@ export class StudentService {
     return this.http.get<Student>(url);
   }
 
-  getstudentlist(): Observable<Student[]> {
+  getstudentlist(): Observable<any> {
     let url: string = `${this.BASE_URL}/student`;
-    return this.http.get<Student[]>(url);
+    return this.http.get<any>(url);
   }
 
   getstudentpromise(): Observable<Student[]> {

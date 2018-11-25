@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
-import {User} from '../../../models/user';
-import {AuthService} from '../../../services/auth.service';
-import {ErroralertService} from '../../../services/erroralert.service';
+import {Router} from "@angular/router";
+import {ErroralertService} from "../../../services/erroralert.service";
+import {AuthService} from "../../../services/auth.service";
+import {User} from "../../../models/user";
 
 @Component({
-  selector: 'app-counselorlogin',
-  templateUrl: './counselorlogin.component.html',
-  styleUrls: ['./counselorlogin.component.css']
+  selector: 'app-psychologistlogin',
+  templateUrl: './psychologistlogin.component.html',
+  styleUrls: ['./psychologistlogin.component.css']
 })
-export class CounselorloginComponent implements OnInit {
+export class PsychologistloginComponent implements OnInit {
+
   user: User = new User();
 
   constructor(private auth: AuthService, private router: Router, private error: ErroralertService) { }
@@ -18,7 +19,7 @@ export class CounselorloginComponent implements OnInit {
   }
 
   onLogin(): void {
-    this.auth.counselorlogin(this.user)
+    this.auth.psychologistlogin(this.user)
     .then((user) => {
       this.error.hidemessage();
       sessionStorage.setItem('userid', user.result.userid);
@@ -34,7 +35,7 @@ export class CounselorloginComponent implements OnInit {
       console.log(sessionStorage.getItem('username'));
       console.log(sessionStorage.getItem('email'));
       console.log(sessionStorage.getItem('role'));
-      this.router.navigate(['/counselormain']);
+      this.router.navigate(['/psychologistmain']);
     })
     .catch((err) => {
       console.log(err);

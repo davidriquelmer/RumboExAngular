@@ -73,6 +73,8 @@ import {AppStoreModule} from "./app-store.module";
 import { MentormainComponent } from './components/mains/mentormain/mentormain.component';
 import { StudentListComponent } from './components/student-list/student-list.component';
 import { NotificationsComponent } from './components/sharedComponents/notifications/notifications.component';
+import {MessagesMenuComponent} from "./components/sharedComponents/messages/messages-menu.component";
+import { PsychologistloginComponent } from './components/logins/psychologistlogin/psychologistlogin.component';
 
 @NgModule({
   declarations: [
@@ -112,7 +114,9 @@ import { NotificationsComponent } from './components/sharedComponents/notificati
     MessagesComponent,
     MentormainComponent,
     StudentListComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    MessagesMenuComponent,
+    PsychologistloginComponent
   ],
   imports: [
     MbscModule,
